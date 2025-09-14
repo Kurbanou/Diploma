@@ -14,11 +14,13 @@ async function loadTemplate(templateName, data) {
     .replace("{заголовок}", data.title || "Грамота")
     .replace("{подзаголовок}", data.subtitle || "Почетная")
     .replace("{подпись}", data.signature || "А. Ч. Бумбуль")
-    .replace("{bg}", `templates/${templateName}/bg.svg`);
+    // .replace("{bg}", `templates/${templateName}/bg.svg`);
+    .replace("{bg}", `templates/${templateName}/bg.jpg`);
 
   const container = document.createElement("div");
   container.innerHTML = filledHtml;
 
+  // Глобальные шрифты
   const fontLinks = `
     <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
@@ -33,23 +35,22 @@ async function loadTemplate(templateName, data) {
   container.prepend(styleTag);
   container.prepend(fontWrapper);
 
+  // Ориентация
   const orientationTag = container.querySelector(".template-meta");
   const orientation = orientationTag?.dataset.orientation || "landscape";
+
+  // Размеры в пикселях
+  const mmToPx = (mm) => (mm * 96) / 25.4;
+  const widthPx = mmToPx(orientation === "portrait" ? 210 : 297);
+  const heightPx = mmToPx(orientation === "portrait" ? 297 : 210);
 
   const wrapper = container.querySelector(".wrapper");
   const bg = container.querySelector(".background");
 
-  if (orientation === "portrait") {
-    wrapper.style.width = "210mm";
-    wrapper.style.height = "297mm";
-    bg.style.width = "210mm";
-    bg.style.height = "297mm";
-  } else {
-    wrapper.style.width = "297mm";
-    wrapper.style.height = "210mm";
-    bg.style.width = "297mm";
-    bg.style.height = "210mm";
-  }
+  wrapper.style.width = `${widthPx}px`;
+  wrapper.style.height = `${heightPx}px`;
+  bg.style.width = `${widthPx}px`;
+  bg.style.height = `${heightPx}px`;
 
   return container;
 }

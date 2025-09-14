@@ -13,9 +13,9 @@ function addRow(entry = {}) {
         <option value="lesorub" ${
           entry.template === "lesorub" ? "selected" : ""
         }>Лесоруб</option>
-        <option value="doska" ${
-          entry.template === "doska" ? "selected" : ""
-        }>Доска</option>
+        <option value="sertificate" ${
+          entry.template === "sertificate" ? "selected" : ""
+        }>sertificate</option>
       </select>
     </td>
     <td><textarea class="message-input">${entry.message || ""}</textarea></td>

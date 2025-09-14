@@ -5,10 +5,23 @@ function html2canvasWrapper(domElement) {
     const container = document.createElement("div");
     container.style.position = "absolute";
     container.style.left = "-9999px";
+    container.style.visibility = "visible";
+
     container.appendChild(domElement);
     document.body.appendChild(container);
 
-    html2canvas(domElement, { scale: 2, useCORS: true }).then((canvas) => {
+    const width = domElement.offsetWidth;
+    const height = domElement.offsetHeight;
+
+    container.style.width = `${width}px`;
+    container.style.height = `${height}px`;
+
+    html2canvas(domElement, {
+      scale: 2,
+      width,
+      height,
+      useCORS: true,
+    }).then((canvas) => {
       document.body.removeChild(container);
       resolve(canvas);
     });
@@ -56,15 +69,17 @@ async function generatePDF(entries) {
             bg: `templates/${entry.template}/bg.svg`,
           });
 
-    const img = htmlElement.querySelector(".background");
-    if (img && !img.complete) {
+    const wrapper = htmlElement.querySelector(".wrapper");
+
+    const bg = wrapper.querySelector(".background");
+    if (bg && !bg.complete) {
       await new Promise((resolve) => {
-        img.onload = resolve;
-        img.onerror = resolve;
+        bg.onload = resolve;
+        bg.onerror = resolve;
       });
     }
 
-    const canvas = await html2canvasWrapper(htmlElement);
+    const canvas = await html2canvasWrapper(wrapper);
     const imgData = canvas.toDataURL("image/jpeg", 1.0);
 
     const pageWidth = pdf.internal.pageSize.getWidth();
