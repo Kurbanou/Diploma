@@ -53,7 +53,7 @@ async function loadTemplate(templateName, data) {
   wrapper.style.overflow = "hidden";
 
   // Устанавливаем фон через background-image
-  wrapper.style.backgroundImage = `url(templates/${templateName}/bg.jpg)`;
+  wrapper.style.backgroundImage = `url(templates/${templateName}/bg.svg)`;
   wrapper.style.backgroundSize = "cover";
   wrapper.style.backgroundPosition = "center";
   wrapper.style.backgroundRepeat = "no-repeat";

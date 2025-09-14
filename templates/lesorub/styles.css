@@ -6,44 +6,25 @@
   box-sizing: border-box;
 }
 
-.wrapper {
-  width: 100%;
-  margin: 0 auto;
-  width: 297mm;
-  height: 210mm;
-  position: relative;
-  overflow: hidden;
-  position: relative;
-}
-
-.background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-  z-index: 0;
-}
-
-.container {
-  background-size: contain;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-evenly;
-  padding: 110px;
+body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
 }
 
 h1,
 h2 {
   text-transform: uppercase;
-  font-size: 88px;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  color: #926188;
-  user-select: none;
   text-align: center;
+  user-select: none;
   line-height: 1;
-  margin-bottom: 40px;
+}
+
+h1 {
+  font-size: 88px;
+  color: #926188;
 }
 
 h2 {
@@ -55,16 +36,14 @@ h3 {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 30px;
-  /* margin-top: 30px; */
-  line-height: 0;
   color: #4f4c40;
-  user-select: none;
   text-align: center;
+  user-select: none;
+  margin-bottom: 20px;
 }
 
 .name {
   font-family: "Marck Script", cursive;
-  font-weight: 400;
   font-size: 40px;
   color: #333;
   text-align: center;
@@ -73,33 +52,28 @@ h3 {
 
 .text {
   font-size: 24px;
+  font-family: "Marck Script", cursive;
   color: #4f4c40;
   text-align: center;
   width: 100%;
   margin-top: 20px;
-  font-family: "Marck Script", cursive;
-  font-weight: 400;
-  font-style: normal;
 }
 
 .atribut {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   max-width: 600px;
+  width: 100%;
 }
 
 .date,
 .signature {
   font-family: "Marck Script", cursive;
-  font-weight: 400;
   font-size: 20px;
-  /* margin-top: 36px;   */
   color: #4f4c40;
   text-align: center;
   width: 190px;
   border-bottom: 1px solid #4f4c40;
-  line-height: 0px;
   padding: 18px 0;
   position: relative;
   user-select: none;
@@ -110,8 +84,8 @@ h3 {
   margin-top: 0;
 }
 
-.date::after {
-  content: "ДАТА";
+.date::after,
+.signature::after {
   font-family: "Montserrat", sans-serif;
   font-weight: 800;
   font-size: 10px;
@@ -121,13 +95,33 @@ h3 {
   transform: translate(-50%, 0%);
 }
 
+.date::after {
+  content: "ДАТА";
+}
+
 .signature::after {
   content: "ДИРЕКТОР";
-  font-family: "Montserrat", sans-serif;
-  font-weight: 800;
-  font-size: 10px;
-  position: absolute;
-  left: 50%;
-  top: 52px;
-  transform: translate(-50%, 0%);
+}
+
+@media print {
+  body {
+    margin: 0;
+  }
+
+  .wrapper {
+    width: 297mm;
+    height: 210mm;
+    page-break-after: always;
+  }
+
+  .container {
+    padding: 0;
+  }
+}
+
+.container {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

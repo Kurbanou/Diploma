@@ -2,7 +2,7 @@ const tableBody = document.querySelector("#data-table tbody");
 
 function addRow(entry = {}) {
   const row = document.createElement("tr");
-
+  // тут добавляем шаблоны
   row.innerHTML = `
     <td><input class="name-input" value="${entry.name || ""}" /></td>
     <td>
