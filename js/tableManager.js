@@ -93,6 +93,15 @@ function restoreTableFromStorage() {
   }
 }
 
+function getEntries() {
+  const rows = document.querySelectorAll("#data-table tbody tr");
+  return Array.from(rows).map((row) => ({
+    name: row.querySelector(".name-input").value,
+    template: row.querySelector(".template-select").value,
+    message: row.querySelector(".message-input").value,
+  }));
+}
+
 document.getElementById("add-row").addEventListener("click", () => {
   addRow();
   updateLocalStorageFromTable();

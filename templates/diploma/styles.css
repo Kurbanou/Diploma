@@ -140,3 +140,13 @@ h3 {
     padding: 0;
   }
 }
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 60px; /* или меньше, если не помещается */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -22,3 +22,23 @@ button {
   padding: 10px 20px;
   font-size: 16px;
 }
+
+.print-wrapper {
+  width: 297mm;
+  height: 210mm;
+  page-break-after: always;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .print-wrapper {
+    margin: 0;
+    padding: 0;
+  }
+}
