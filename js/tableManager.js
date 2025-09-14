@@ -19,8 +19,15 @@ function addRow(entry = {}) {
       </select>
     </td>
     <td><textarea class="message-input">${entry.message || ""}</textarea></td>
-    <td><button class="delete-row">🗑️</button></td>
+    <td>
+      <button class="preview-row">🔍</button>
+      <button class="delete-row">🗑️</button>
+    </td>
   `;
+
+  row.querySelector(".preview-row").addEventListener("click", () => {
+    previewRow(row);
+  });
 
   row.querySelector(".delete-row").addEventListener("click", () => {
     row.remove();
@@ -28,6 +35,40 @@ function addRow(entry = {}) {
   });
 
   tableBody.appendChild(row);
+}
+
+async function previewRow(row) {
+  const name = row.querySelector(".name-input").value;
+  const template = row.querySelector(".template-select").value;
+  const message = row.querySelector(".message-input").value;
+
+  const date = new Date().toLocaleDateString("ru-RU", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  const htmlElement = await loadTemplate(template, {
+    name,
+    message,
+    date,
+    title: "Грамота",
+    subtitle: "Почетная",
+    signature: "А. Ч. Бумбуль",
+    bg: "bg.svg",
+  });
+
+  const printWindow = window.open("", "_blank");
+  printWindow.document.write("<html><head><title>Предпросмотр</title>");
+  printWindow.document.write('<link href="styles.css" rel="stylesheet" />');
+  printWindow.document.write(
+    '<link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet" />'
+  );
+  printWindow.document.write("</head><body>");
+  printWindow.document.body.appendChild(htmlElement);
+  printWindow.document.write("</body></html>");
+  printWindow.document.close();
+  printWindow.focus();
 }
 
 function updateLocalStorageFromTable() {
