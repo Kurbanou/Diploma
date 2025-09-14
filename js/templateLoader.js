@@ -19,7 +19,6 @@ async function loadTemplate(templateName, data) {
   const container = document.createElement("div");
   container.innerHTML = filledHtml;
 
-  // 🔤 Глобальные шрифты
   const fontLinks = `
     <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
@@ -28,13 +27,29 @@ async function loadTemplate(templateName, data) {
   const fontWrapper = document.createElement("div");
   fontWrapper.innerHTML = fontLinks;
 
-  // 🎨 Локальные стили шаблона
   const styleTag = document.createElement("style");
   styleTag.textContent = cssText;
 
-  // 📦 Вставляем всё в контейнер
   container.prepend(styleTag);
   container.prepend(fontWrapper);
+
+  const orientationTag = container.querySelector(".template-meta");
+  const orientation = orientationTag?.dataset.orientation || "landscape";
+
+  const wrapper = container.querySelector(".wrapper");
+  const bg = container.querySelector(".background");
+
+  if (orientation === "portrait") {
+    wrapper.style.width = "210mm";
+    wrapper.style.height = "297mm";
+    bg.style.width = "210mm";
+    bg.style.height = "297mm";
+  } else {
+    wrapper.style.width = "297mm";
+    wrapper.style.height = "210mm";
+    bg.style.width = "297mm";
+    bg.style.height = "210mm";
+  }
 
   return container;
 }

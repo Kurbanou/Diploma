@@ -8,7 +8,7 @@ function html2canvasWrapper(domElement) {
     container.appendChild(domElement);
     document.body.appendChild(container);
 
-    html2canvas(domElement, { scale: 2 }).then((canvas) => {
+    html2canvas(domElement, { scale: 2, useCORS: true }).then((canvas) => {
       document.body.removeChild(container);
       resolve(canvas);
     });
@@ -16,25 +16,53 @@ function html2canvasWrapper(domElement) {
 }
 
 async function generatePDF(entries) {
-  const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "landscape" });
+  if (entries.length === 0) return;
+
+  const date = new Date().toLocaleDateString("ru-RU", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  const first = entries[0];
+  const firstHtml = await loadTemplate(first.template, {
+    name: first.name,
+    message: first.message,
+    date,
+    title: "Грамота",
+    subtitle: "Почетная",
+    signature: "А. Ч. Бумбуль",
+    bg: `templates/${first.template}/bg.svg`,
+  });
+
+  const orientationTag = firstHtml.querySelector(".template-meta");
+  const orientation = orientationTag?.dataset.orientation || "landscape";
+
+  const pdf = new jsPDF({ unit: "mm", format: "a4", orientation });
 
   for (let i = 0; i < entries.length; i++) {
-    const { name, template, message } = entries[i];
-    const date = new Date().toLocaleDateString("ru-RU", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
+    const entry = entries[i];
 
-    const htmlElement = await loadTemplate(template, {
-      name,
-      message,
-      date,
-      title: "Грамота",
-      subtitle: "Почетная",
-      signature: "А. Ч. Бумбуль",
-      bg: "./assets/img/svg/bg.svg",
-    });
+    const htmlElement =
+      i === 0
+        ? firstHtml
+        : await loadTemplate(entry.template, {
+            name: entry.name,
+            message: entry.message,
+            date,
+            title: "Грамота",
+            subtitle: "Почетная",
+            signature: "А. Ч. Бумбуль",
+            bg: `templates/${entry.template}/bg.svg`,
+          });
+
+    const img = htmlElement.querySelector(".background");
+    if (img && !img.complete) {
+      await new Promise((resolve) => {
+        img.onload = resolve;
+        img.onerror = resolve;
+      });
+    }
 
     const canvas = await html2canvasWrapper(htmlElement);
     const imgData = canvas.toDataURL("image/jpeg", 1.0);
