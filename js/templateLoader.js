@@ -19,9 +19,22 @@ async function loadTemplate(templateName, data) {
   const container = document.createElement("div");
   container.innerHTML = filledHtml;
 
+  // 🔤 Глобальные шрифты
+  const fontLinks = `
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  `;
+  const fontWrapper = document.createElement("div");
+  fontWrapper.innerHTML = fontLinks;
+
+  // 🎨 Локальные стили шаблона
   const styleTag = document.createElement("style");
   styleTag.textContent = cssText;
+
+  // 📦 Вставляем всё в контейнер
   container.prepend(styleTag);
+  container.prepend(fontWrapper);
 
   return container;
 }
