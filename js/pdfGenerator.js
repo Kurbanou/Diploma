@@ -1,47 +1,15 @@
 const { jsPDF } = window.jspdf;
 
-function html2canvasWrapper(domElement) {
-  return new Promise(async (resolve) => {
-    // Создаём контейнер для захвата
-    const container = document.createElement("div");
-    container.style.position = "absolute";
-    container.style.left = "-9999px";
-    container.style.top = "0";
-    container.style.visibility = "visible";
-    container.style.zIndex = "-1";
-    container.style.background = "white";
-
-    container.appendChild(domElement);
-    document.body.appendChild(container);
-
-    // Дожидаемся загрузки шрифтов
-    await document.fonts.ready;
-
-    // Дожидаемся отрисовки DOM
-    await new Promise((r) => requestAnimationFrame(() => r()));
-
-    const width = domElement.offsetWidth;
-    const height = domElement.offsetHeight;
-
-    container.style.width = `${width}px`;
-    container.style.height = `${height}px`;
-
-    // Захват canvas
-    html2canvas(domElement, {
-      scale: 2,
-      width,
-      height,
-      useCORS: true,
-      backgroundColor: null, // сохраняем прозрачность, если нужно
-    }).then((canvas) => {
-      document.body.removeChild(container);
-      resolve(canvas);
-    });
-  });
-}
-
 async function generatePDF(entries) {
-  if (entries.length === 0) return;
+  if (typeof domtoimage === "undefined") {
+    console.error("domtoimage не загружен. Проверь подключение CDN.");
+    alert(
+      "Ошибка: dom-to-image-more не загружен. Проверь порядок подключения скриптов в index.html."
+    );
+    return;
+  }
+
+  if (!entries || entries.length === 0) return;
 
   const date = new Date().toLocaleDateString("ru-RU", {
     day: "numeric",
@@ -81,8 +49,28 @@ async function generatePDF(entries) {
 
     const wrapper = htmlElement.querySelector(".wrapper");
 
-    const canvas = await html2canvasWrapper(wrapper);
-    const imgData = canvas.toDataURL("image/jpeg", 1.0);
+    // Вставляем в DOM для корректного рендеринга
+    const container = document.createElement("div");
+    container.style.position = "absolute";
+    container.style.left = "-9999px";
+    container.style.top = "0";
+    container.style.visibility = "visible";
+    container.style.zIndex = "-1";
+    container.appendChild(wrapper);
+    document.body.appendChild(container);
+
+    // Дожидаемся шрифтов и отрисовки
+    await document.fonts.ready;
+    await new Promise((r) => requestAnimationFrame(() => r()));
+
+    // Генерируем изображение
+    const imgData = await domtoimage.toJpeg(wrapper, {
+      quality: 1,
+      bgcolor: "white",
+      cacheBust: true,
+    });
+
+    document.body.removeChild(container);
 
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
