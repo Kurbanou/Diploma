@@ -1,0 +1,24 @@
+body {
+  font-family: "Marck Script", cursive;
+  padding: 20px;
+  background: #f0f0f0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+textarea {
+  width: 100%;
+  resize: vertical;
+}
+button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
