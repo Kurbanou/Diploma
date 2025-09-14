@@ -42,3 +42,7 @@ button {
     padding: 0;
   }
 }
+
+.lora {
+  font-family: "Lora", serif;
+}

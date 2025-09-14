@@ -23,58 +23,67 @@ h2 {
 }
 
 h1 {
-  font-size: 88px;
-  color: #926188;
+  font-size: 72px;
+  color: #fcc201;
+  margin-bottom: 20px;
 }
 
 h2 {
-  font-size: 40px;
-  color: #fcc201;
+  font-size: 48px;
+  color: #1b4d3e;
+  margin-bottom: 40px;
 }
 
 h3 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Marck Script", cursive;
   font-weight: 500;
-  font-size: 30px;
-  color: #4f4c40;
+  font-size: 28px;
+  color: #efe68b;
   text-align: center;
   user-select: none;
-  margin-bottom: 20px;
 }
 
 .name {
   font-family: "Marck Script", cursive;
-  font-size: 40px;
-  color: #333;
+  font-weight: 500;
+  font-size: 48px;
+  color: #000;
   text-align: center;
-  margin-top: 30px;
 }
 
 .text {
-  font-size: 24px;
-  font-family: "Marck Script", cursive;
+  font-size: 18px;
+  font-family: "Lora", serif;
+  font-style: italic;
   color: #4f4c40;
   text-align: center;
   width: 100%;
+  max-width: 800px;
   margin-top: 20px;
 }
 
 .atribut {
   display: flex;
   justify-content: space-between;
-  max-width: 600px;
+  max-width: 500px;
   width: 100%;
+  align-items: flex-end;
+  position: absolute;
+  left: 50%;
+  bottom: 150px;
+  transform: translateX(-50%);
 }
 
 .date,
 .signature {
-  font-family: "Marck Script", cursive;
-  font-size: 20px;
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 100;
   color: #4f4c40;
   text-align: center;
   width: 190px;
   border-bottom: 1px solid #4f4c40;
-  padding: 18px 0;
   position: relative;
   user-select: none;
 }
@@ -86,21 +95,23 @@ h3 {
 
 .date::after,
 .signature::after {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 800;
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-weight: 100;
   font-size: 10px;
   position: absolute;
   left: 50%;
-  top: 52px;
+  top: 30px;
   transform: translate(-50%, 0%);
 }
 
 .date::after {
-  content: "ДАТА";
+  content: "дата";
+  top: 20px;
 }
 
 .signature::after {
-  content: "ДИРЕКТОР";
+  content: "директор";
 }
 
 @media print {
@@ -120,7 +131,7 @@ h3 {
 }
 
 .container {
-  margin-top: 200px;
+  margin-top: 128px;
   display: flex;
   flex-direction: column;
   align-items: center;
