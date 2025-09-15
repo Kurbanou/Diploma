@@ -84,11 +84,11 @@ function addEntry(entry = {}) {
 
   card.innerHTML = `
     <div class="field">
-      <label>ФИО</label>
+      
       <input class="name-input" value="${entry.name || ""}" />
     </div>
     <div class="field">
-      <label>Шаблон</label>
+     
       <select class="template-select">
         <option value="blagodarnots" ${
           entry.template === "blagodarnots" ? "selected" : ""
@@ -108,12 +108,26 @@ function addEntry(entry = {}) {
       </select>
     </div>
     <div class="field">
-      <label>Поздравление</label>
+      
       <textarea class="message-input">${entry.message || ""}</textarea>
     </div>
     <div class="actions">
-      <button class="preview-entry">🔍</button>
-      <button class="delete-entry">🗑️</button>
+      <button class="preview-entry"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#f0f6fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+  <circle cx="11" cy="11" r="8" />
+  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+</svg>
+</button>
+      <button class="delete-entry"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#f0f6fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+  <!-- Крышка -->
+  <path d="M3 6h18" />
+  <!-- Ручки -->
+  <path d="M8 6l1-2h6l1 2" />
+  <!-- Корпус -->
+  <rect x="5" y="6" width="14" height="14" rx="2" />
+  <!-- Вертикальные линии мусора -->
+  <path d="M10 11v6M14 11v6" />
+</svg>
+</button>
     </div>
   `;
 

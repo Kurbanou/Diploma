@@ -66,46 +66,23 @@ select {
   font: inherit;
 }
 
-/* Remove animations for users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-@media print {
-  body {
-    margin: 0;
-  }
-
-  .wrapper {
-    width: 297mm;
-    height: 210mm;
-    page-break-after: always;
-  }
-
-  .container {
-    padding: 0;
-  }
-}
-
 /* Общие стили */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
-  background-color: #f6f8fa;
-  color: #24292f;
-  margin: 0;
-  padding: 40px;
+  background-color: #010409;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-page {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Контейнер карточек */
@@ -113,27 +90,23 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  background-color: #0d1117;
 }
 
 /* Карточка */
 .entry-card {
-  background-color: #ffffff;
-  border: 1px solid #d0d7de;
-  border-radius: 6px;
+  border: 1px solid #3d444d;
+  border-radius: 8px;
   padding: 16px;
   box-shadow: 0 1px 0 rgba(27, 31, 35, 0.04);
 }
 
 /* Поля ввода */
-.field {
-  margin-bottom: 12px;
-}
-
 .field label {
   display: block;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: #1f2328;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .field input,
@@ -142,10 +115,12 @@ body {
   width: 100%;
   padding: 8px;
   font-size: 14px;
-  border: 1px solid #d0d7de;
+  border: 1px solid #3d444d;
   border-radius: 6px;
-  background-color: #ffffff;
-  color: #24292f;
+  background-color: #151b23;
+  line-height: 20px;
+  font-weight: 200;
+  color: #f0f6fc;
   box-sizing: border-box;
 }
 
@@ -154,47 +129,25 @@ body {
   min-height: 80px;
 }
 
-/* Кнопки действий внутри карточки */
-.actions {
-  display: flex;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.actions button {
-  background-color: #f6f8fa;
-  border: 1px solid #d0d7de;
+button {
+  border: 1px solid #3d444d;
   border-radius: 6px;
-  padding: 6px 12px;
-  font-size: 14px;
-  cursor: pointer;
-  color: #0969da;
-  transition: background-color 0.2s ease;
-}
-
-.actions button:hover {
-  background-color: #eaeef2;
-}
-
-/* Кнопки управления */
-.btns {
-  margin-top: 32px;
-  display: flex;
-  gap: 12px;
-}
-
-.btns button {
-  background-color: #2da44e;
-  border: 1px solid rgba(27, 31, 35, 0.15);
-  border-radius: 6px;
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #ffffff;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  flex-shrink: 0;
+  background-color: transparent;
 }
 
-.btns button:hover {
-  background-color: #218639;
+button:hover {
+  background-color: #656c7633;
+}
+
+.icon-bnt {
+  fill: #f0f6fc;
 }
