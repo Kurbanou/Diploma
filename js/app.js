@@ -1,9 +1,23 @@
 const entryContainer = document.getElementById("entry-container");
+
+const templateList = [
+  { value: "blagodarnots", label: "Благодарность" },
+  { value: "pochetnaja", label: "Почетная" },
+  { value: "gramota", label: "Грамота22" },
+  { value: "lesorub", label: "Лесоруб" },
+  { value: "sertificate", label: "Sertificate" },
+  { value: "sertificate2", label: "Sertificate2" },
+];
+
+function getTemplateLabel(value) {
+  return templateList.find((t) => t.value === value)?.label || "";
+}
+
 async function printAll() {
   const entries = Array.from(document.querySelectorAll(".entry-card")).map(
     (card) => ({
       name: card.querySelector(".name-input").value,
-      template: card.querySelector(".template-select").value,
+      template: card.querySelector(".template-select").dataset.value,
       message: card.querySelector(".message-input").value,
     })
   );
@@ -82,55 +96,87 @@ function addEntry(entry = {}) {
   const card = document.createElement("div");
   card.className = "entry-card";
 
+  // Создание кастомного селектора шаблонов
+  const templateSelect = document.createElement("div");
+  templateSelect.className = "template-select";
+  templateSelect.dataset.value = entry.template || "";
+
+  const selectedValue = document.createElement("div");
+  selectedValue.className = "selected-value";
+  selectedValue.textContent =
+    getTemplateLabel(entry.template) || "Выбрать шаблон";
+
+  const options = document.createElement("ul");
+  options.className = "options";
+  templateList.forEach((t) => {
+    const li = document.createElement("li");
+    li.dataset.value = t.value;
+    li.textContent = t.label;
+    options.appendChild(li);
+  });
+
+  templateSelect.appendChild(selectedValue);
+  templateSelect.appendChild(options);
+
+  // Открытие/закрытие по клику на селектор
+  templateSelect.addEventListener("click", () => {
+    templateSelect.classList.toggle("open");
+  });
+
+  // Выбор варианта
+  options.querySelectorAll("li").forEach((li) => {
+    li.addEventListener("click", (e) => {
+      e.stopPropagation(); // ← предотвращаем всплытие
+      selectedValue.textContent = li.textContent;
+      templateSelect.dataset.value = li.dataset.value;
+      templateSelect.classList.remove("open");
+      updateLocalStorageFromEntries();
+    });
+  });
+
+  // Закрытие при клике вне
+  document.addEventListener("click", (e) => {
+    if (!templateSelect.contains(e.target)) {
+      templateSelect.classList.remove("open");
+    }
+  });
+
+  // Закрытие при прокрутке
+  window.addEventListener("scroll", () => {
+    templateSelect.classList.remove("open");
+  });
+
+  // Сборка карточки
   card.innerHTML = `
-    <div class="field">
-      
+    <div class="field name">
       <input class="name-input" value="${entry.name || ""}" />
     </div>
-    <div class="field">
-     
-      <select class="template-select">
-        <option value="blagodarnots" ${
-          entry.template === "blagodarnots" ? "selected" : ""
-        }>Благодарность</option>
-        <option value="pochetnaja" ${
-          entry.template === "pochetnaja" ? "selected" : ""
-        }>Почетная</option>
-        <option value="gramota" ${
-          entry.template === "gramota" ? "selected" : ""
-        }>Грамота</option>
-        <option value="lesorub" ${
-          entry.template === "lesorub" ? "selected" : ""
-        }>Лесоруб</option>
-        <option value="sertificate" ${
-          entry.template === "sertificate" ? "selected" : ""
-        }>Sertificate</option>
-      </select>
-    </div>
-    <div class="field">
-      
+    <div class="field"></div>
+    <div class="field textaria">
       <textarea class="message-input">${entry.message || ""}</textarea>
     </div>
     <div class="actions">
-      <button class="preview-entry"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#f0f6fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-  <circle cx="11" cy="11" r="8" />
-  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-</svg>
-</button>
-      <button class="delete-entry"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#f0f6fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-  <!-- Крышка -->
-  <path d="M3 6h18" />
-  <!-- Ручки -->
-  <path d="M8 6l1-2h6l1 2" />
-  <!-- Корпус -->
-  <rect x="5" y="6" width="14" height="14" rx="2" />
-  <!-- Вертикальные линии мусора -->
-  <path d="M10 11v6M14 11v6" />
-</svg>
-</button>
+      <button class="preview-entry">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#f0f6fc" stroke-width="1.5" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+      </button>
+      <button class="delete-entry">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#f0f6fc" stroke-width="1.5" viewBox="0 0 24 24">
+          <path d="M3 6h18" />
+          <path d="M8 6l1-2h6l1 2" />
+          <rect x="5" y="6" width="14" height="14" rx="2" />
+          <path d="M10 11v6M14 11v6" />
+        </svg>
+      </button>
     </div>
   `;
 
+  // Вставка кастомного селектора в карточку
+  card.querySelectorAll(".field")[1].appendChild(templateSelect);
+
+  // События
   card.querySelector(".preview-entry").addEventListener("click", () => {
     previewEntry(card);
   });
@@ -145,7 +191,8 @@ function addEntry(entry = {}) {
 
 function previewEntry(card) {
   const name = card.querySelector(".name-input").value;
-  const template = card.querySelector(".template-select").value;
+  const template = card.querySelector(".template-select").dataset.value;
+
   const message = card.querySelector(".message-input").value;
 
   const date = new Date().toLocaleDateString("ru-RU", {
@@ -211,7 +258,7 @@ function updateLocalStorageFromEntries() {
   const cards = document.querySelectorAll(".entry-card");
   const entries = Array.from(cards).map((card) => ({
     name: card.querySelector(".name-input").value,
-    template: card.querySelector(".template-select").value,
+    template: card.querySelector(".template-select").dataset.value,
     message: card.querySelector(".message-input").value,
   }));
   localStorage.setItem("gramotyData", JSON.stringify(entries));

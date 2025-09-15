@@ -99,6 +99,10 @@ body {
   border-radius: 8px;
   padding: 16px;
   box-shadow: 0 1px 0 rgba(27, 31, 35, 0.04);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  user-select: none;
 }
 
 /* Поля ввода */
@@ -125,8 +129,9 @@ body {
 }
 
 .field textarea {
+  height: 38px;
   resize: vertical;
-  min-height: 80px;
+  min-height: 38px;
 }
 
 button {
@@ -134,14 +139,14 @@ button {
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
   display: flex;
   justify-content: center;
   align-items: center;
   line-height: 1;
   flex-shrink: 0;
-  background-color: transparent;
+  background-color: #010409;
 }
 
 button:hover {
@@ -150,4 +155,63 @@ button:hover {
 
 .icon-bnt {
   fill: #f0f6fc;
+}
+
+/* select */
+.selected-value {
+  width: fit-content;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #3d444d;
+  border-radius: 6px;
+  background-color: #151b23;
+  line-height: 20px;
+  font-weight: 200;
+  color: #f0f6fc;
+  box-sizing: border-box;
+}
+
+.template-select {
+  position: relative;
+}
+
+.options {
+  transition: all 0.3s linear;
+  display: none;
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  transform: translateY(100%);
+  border: 1px solid #3d444d;
+  padding: 8px;
+  color: #f0f6fc;
+
+  flex-direction: column;
+  gap: 8px;
+  background-color: #010409;
+  border-radius: 6px;
+}
+
+.open .options {
+  display: flex;
+}
+
+.actions,
+.btns {
+  display: flex;
+  gap: 8px;
+}
+
+.btns {
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.textaria {
+  order: 1;
+  width: 100%;
+}
+
+.name {
+  flex-grow: 1;
 }
