@@ -12,8 +12,8 @@ body {
   line-height: 1.4;
 }
 
-h1,
-h2 {
+.gramota h1,
+.gramota h2 {
   text-transform: uppercase;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -22,19 +22,19 @@ h2 {
   line-height: 1;
 }
 
-h1 {
+.gramota h1 {
   font-size: 72px;
   color: #fcc201;
   margin-bottom: 20px;
 }
 
-h2 {
+.gramota h2 {
   font-size: 48px;
   color: #1b4d3e;
   margin-bottom: 40px;
 }
 
-h3 {
+.gramota h3 {
   font-family: "Marck Script", cursive;
   font-weight: 500;
   font-size: 28px;
@@ -43,7 +43,7 @@ h3 {
   user-select: none;
 }
 
-.name {
+.gramota .name {
   font-family: "Marck Script", cursive;
   font-weight: 500;
   font-size: 48px;
@@ -51,7 +51,7 @@ h3 {
   text-align: center;
 }
 
-.text {
+.gramota .text {
   font-size: 18px;
   font-family: "Lora", serif;
   font-style: italic;
@@ -62,7 +62,7 @@ h3 {
   margin-top: 20px;
 }
 
-.atribut {
+.gramota .atribut {
   display: flex;
   justify-content: space-between;
   max-width: 500px;
@@ -74,8 +74,8 @@ h3 {
   transform: translateX(-50%);
 }
 
-.date,
-.signature {
+.gramota .date,
+.gramota .signature {
   font-family: "Lora", serif;
   font-style: italic;
   font-size: 14px;
@@ -88,13 +88,13 @@ h3 {
   user-select: none;
 }
 
-.signature .name {
+.gramota .signature .name {
   font-size: 20px;
   margin-top: 0;
 }
 
-.date::after,
-.signature::after {
+.gramota .date::after,
+.gramota .signature::after {
   font-family: "Lora", serif;
   font-style: italic;
   font-weight: 100;
@@ -105,12 +105,12 @@ h3 {
   transform: translate(-50%, 0%);
 }
 
-.date::after {
+.gramota .date::after {
   content: "дата";
   top: 20px;
 }
 
-.signature::after {
+.gramota .signature::after {
   content: "директор";
 }
 
@@ -119,18 +119,18 @@ h3 {
     margin: 0;
   }
 
-  .wrapper {
+  .gramota .wrapper {
     width: 297mm;
     height: 210mm;
     page-break-after: always;
   }
 
-  .container {
+  .gramota .container {
     padding: 0;
   }
 }
 
-.container {
+.gramota .container {
   margin-top: 128px;
   display: flex;
   flex-direction: column;
