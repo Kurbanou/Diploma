@@ -9,45 +9,22 @@
       href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap"
       rel="stylesheet"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
       rel="stylesheet"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <table id="data-table">
-      <thead>
-        <tr>
-          <th>ФИО</th>
-          <th>Шаблон</th>
-          <th>Поздравление</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <div id="entry-container" class="entry-list"></div>
+
     <div class="btns">
-      <button id="add-row">➕ Добавить строку</button>
+      <button id="add-entry">➕ Добавить карточку</button>
       <button id="print-all">🖨️ Распечатать всё</button>
     </div>
-
-    <div
-      id="preview-container"
-      style="
-        display: none;
-        margin-top: 20px;
-        border: 1px solid #ccc;
-        padding: 10px;
-      "
-    ></div>
 
     <!-- Библиотеки -->
     <script src="https://unpkg.com/dom-to-image-more@2.9.0/dist/dom-to-image-more.min.js"></script>
@@ -59,8 +36,6 @@
 
     <!-- Скрипты -->
     <script src="js/templateLoader.js"></script>
-    <script src="js/tableManager.js"></script>
-
     <script src="js/app.js"></script>
   </body>
 </html>

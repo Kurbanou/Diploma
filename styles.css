@@ -1,40 +1,64 @@
-body {
-  font-family: "Marck Script", cursive;
-  padding: 20px;
-  background: #f0f0f0;
-}
-
-/* Reset CSS */
+/* Box sizing reset */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+/* Remove default margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove default padding */
+ul[role="list"],
+ol[role="list"] {
+  padding: 0;
+}
+
+/* Remove list styles */
+ul,
+ol {
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
-html,
+/* Set core body defaults */
 body {
-  height: 100%;
-  font-family: sans-serif;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
   line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  background-color: #fff;
+  color: #000;
 }
 
+/* Remove default link styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Make images easier to work with */
 img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
+picture {
   max-width: 100%;
+  display: block;
 }
 
+/* Inherit fonts for form elements */
 input,
 button,
 textarea,
@@ -42,80 +66,135 @@ select {
   font: inherit;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
+/* Remove animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
 
-ul,
-ol {
-  list-style: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-th,
-td {
-  border: 1px solid #ccc;
-  padding: 8px;
-}
-textarea {
-  width: 100%;
-  resize: vertical;
-}
-button {
-  margin-right: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-}
-
-.print-wrapper {
-  width: 297mm;
-  height: 210mm;
-  page-break-after: always;
-  box-sizing: border-box;
-  overflow: hidden;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @media print {
   body {
     margin: 0;
-    padding: 0;
   }
 
-  .print-wrapper {
-    margin: 0;
+  .wrapper {
+    width: 297mm;
+    height: 210mm;
+    page-break-after: always;
+  }
+
+  .container {
     padding: 0;
   }
 }
 
-.lora {
-  font-family: "Lora", serif;
+/* Общие стили */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background-color: #f6f8fa;
+  color: #24292f;
+  margin: 0;
+  padding: 40px;
 }
 
-input {
-  width: 100%;
-  border-radius: 14px;
-  padding: 14px 20px;
-  display: block;
-}
-table {
-  width: 100%;
-}
-tr {
-  display: grid;
-  grid-template-columns: 4fr 1fr 4fr 1fr;
-}
-td,
-th {
+/* Контейнер карточек */
+.entry-list {
   display: flex;
-  flex-shrink: 0;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Карточка */
+.entry-card {
+  background-color: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 16px;
+  box-shadow: 0 1px 0 rgba(27, 31, 35, 0.04);
+}
+
+/* Поля ввода */
+.field {
+  margin-bottom: 12px;
+}
+
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #1f2328;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #24292f;
+  box-sizing: border-box;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Кнопки действий внутри карточки */
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.actions button {
+  background-color: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #0969da;
+  transition: background-color 0.2s ease;
+}
+
+.actions button:hover {
+  background-color: #eaeef2;
+}
+
+/* Кнопки управления */
+.btns {
+  margin-top: 32px;
+  display: flex;
+  gap: 12px;
+}
+
+.btns button {
+  background-color: #2da44e;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btns button:hover {
+  background-color: #218639;
 }
