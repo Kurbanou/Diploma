@@ -1,0 +1,140 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+h1,
+h2 {
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  user-select: none;
+  line-height: 1;
+}
+
+.blagodarnots h1 {
+  font-size: 50px;
+  color: #fcc201;
+  margin-bottom: 20px;
+}
+
+.blagodarnots h2 {
+  font-size: 48px;
+  color: #1b4d3e;
+  margin-bottom: 40px;
+}
+
+.blagodarnots h3 {
+  font-family: "Marck Script", cursive;
+  font-weight: 500;
+  font-size: 28px;
+  color: #efe68b;
+  text-align: center;
+  user-select: none;
+}
+
+.name {
+  font-family: "Marck Script", cursive;
+  font-weight: 500;
+  font-size: 48px;
+  color: #000;
+  text-align: center;
+}
+
+.text {
+  font-size: 18px;
+  font-family: "Lora", serif;
+  font-style: italic;
+  color: #4f4c40;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+}
+
+.atribut {
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px;
+  width: 100%;
+  align-items: flex-end;
+  position: absolute;
+  left: 50%;
+  bottom: 150px;
+  transform: translateX(-50%);
+}
+
+.date,
+.signature {
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 100;
+  color: #4f4c40;
+  text-align: center;
+  width: 190px;
+  border-bottom: 1px solid #4f4c40;
+  position: relative;
+  user-select: none;
+}
+
+.signature .name {
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.date::after,
+.signature::after {
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-weight: 100;
+  font-size: 10px;
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  transform: translate(-50%, 0%);
+}
+
+.date::after {
+  content: "дата";
+  top: 20px;
+}
+
+.signature::after {
+  content: "директор";
+}
+
+@media print {
+  body {
+    margin: 0;
+  }
+
+  .wrapper {
+    width: 297mm;
+    height: 210mm;
+    page-break-after: always;
+  }
+
+  .container {
+    padding: 0;
+  }
+}
+
+.container {
+  margin-top: 128px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 450px;
+  justify-content: center;
+}

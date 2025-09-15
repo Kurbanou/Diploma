@@ -7,9 +7,15 @@ function addRow(entry = {}) {
     <td><input class="name-input" value="${entry.name || ""}" /></td>
     <td>
       <select class="template-select">
+        <option value="blagodarnots" ${
+          entry.template === "blagodarnots" ? "selected" : ""
+        }>Благодарность</option>
         <option value="pochetnaja" ${
           entry.template === "pochetnaja" ? "selected" : ""
         }>Почетная</option>
+        <option value="gramota" ${
+          entry.template === "gramota" ? "selected" : ""
+        }>Грамота</option>
         <option value="lesorub" ${
           entry.template === "lesorub" ? "selected" : ""
         }>Лесоруб</option>
