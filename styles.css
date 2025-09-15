@@ -3,6 +3,56 @@ body {
   padding: 20px;
   background: #f0f0f0;
 }
+
+/* Reset CSS */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -45,4 +95,23 @@ button {
 
 .lora {
   font-family: "Lora", serif;
+}
+
+input {
+  width: 100%;
+  border-radius: 14px;
+  padding: 14px 20px;
+  display: block;
+}
+table {
+  width: 100%;
+}
+tr {
+  display: grid;
+  grid-template-columns: 4fr 1fr 4fr 1fr;
+}
+td,
+th {
+  display: flex;
+  flex-shrink: 0;
 }
