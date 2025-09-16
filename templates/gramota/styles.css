@@ -12,8 +12,8 @@ body {
   line-height: 1.4;
 }
 
-.gramota h1,
-.gramota h2 {
+.gramot h1,
+.gramot h2 {
   text-transform: uppercase;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -22,19 +22,19 @@ body {
   line-height: 1;
 }
 
-.gramota h1 {
+.gramot h1 {
   font-size: 72px;
   color: #fcc201;
   margin-bottom: 20px;
 }
 
-.gramota h2 {
+.gramot h2 {
   font-size: 48px;
   color: #1b4d3e;
   margin-bottom: 40px;
 }
 
-.gramota h3 {
+.gramot h3 {
   font-family: "Marck Script", cursive;
   font-weight: 500;
   font-size: 28px;
@@ -43,7 +43,7 @@ body {
   user-select: none;
 }
 
-.gramota .name {
+.gramot .name {
   font-family: "Marck Script", cursive;
   font-weight: 500;
   font-size: 48px;
@@ -51,18 +51,19 @@ body {
   text-align: center;
 }
 
-.gramota .text {
+.gramot .text {
   font-size: 18px;
   font-family: "Lora", serif;
   font-style: italic;
   color: #4f4c40;
   text-align: center;
+  line-height: 1.5em;
   width: 100%;
   max-width: 800px;
   margin-top: 20px;
 }
 
-.gramota .atribut {
+.gramot .atribut {
   display: flex;
   justify-content: space-between;
   max-width: 500px;
@@ -74,8 +75,8 @@ body {
   transform: translateX(-50%);
 }
 
-.gramota .date,
-.gramota .signature {
+.gramot .date,
+.gramot .signature {
   font-family: "Lora", serif;
   font-style: italic;
   font-size: 14px;
@@ -88,13 +89,13 @@ body {
   user-select: none;
 }
 
-.gramota .signature .name {
+.gramot .signature .name {
   font-size: 20px;
   margin-top: 0;
 }
 
-.gramota .date::after,
-.gramota .signature::after {
+.gramot .date::after,
+.gramot .signature::after {
   font-family: "Lora", serif;
   font-style: italic;
   font-weight: 100;
@@ -105,12 +106,12 @@ body {
   transform: translate(-50%, 0%);
 }
 
-.gramota .date::after {
+.gramot .date::after {
   content: "дата";
   top: 20px;
 }
 
-.gramota .signature::after {
+.gramot .signature::after {
   content: "директор";
 }
 
@@ -119,18 +120,18 @@ body {
     margin: 0;
   }
 
-  .gramota .wrapper {
+  .wrapper {
     width: 297mm;
     height: 210mm;
     page-break-after: always;
   }
 
-  .gramota .container {
+  .container {
     padding: 0;
   }
 }
 
-.gramota .container {
+.gramot .container {
   margin-top: 128px;
   display: flex;
   flex-direction: column;

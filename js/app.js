@@ -3,10 +3,9 @@ const entryContainer = document.getElementById("entry-container");
 const templateList = [
   { value: "blagodarnots", label: "Благодарность" },
   { value: "pochetnaja", label: "Почетная" },
-  { value: "gramota", label: "Грамота22" },
+  { value: "gramota", label: "Грамота" },
   { value: "lesorub", label: "Лесоруб" },
   { value: "sertificate", label: "Sertificate" },
-  { value: "sertificate2", label: "Sertificate2" },
 ];
 
 function getTemplateLabel(value) {
@@ -139,11 +138,6 @@ function addEntry(entry = {}) {
     if (!templateSelect.contains(e.target)) {
       templateSelect.classList.remove("open");
     }
-  });
-
-  // Закрытие при прокрутке
-  window.addEventListener("scroll", () => {
-    templateSelect.classList.remove("open");
   });
 
   // Сборка карточки
