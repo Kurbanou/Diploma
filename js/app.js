@@ -17,7 +17,7 @@ async function printAll() {
     (card) => ({
       name: card.querySelector(".name-input").value,
       template: card.querySelector(".template-select").dataset.value,
-      message: card.querySelector(".message-input").value,
+      message: card.querySelector(".message-input").innerHTML,
     })
   );
 
@@ -33,11 +33,9 @@ async function printAll() {
             padding: 0;
             background: white;
           }
-
-         @page {
+          @page {
             margin: 0;
           }
-
           @media print {
             .gramota {
               width: 100%;
@@ -45,13 +43,10 @@ async function printAll() {
               page-break-after: always;
             }
           }
-
-         
-            .gramota {
-              page-break-after: always;
-              width: 100vw;
-              height: 100vh;
-            }
+          .gramota {
+            page-break-after: always;
+            width: 100vw;
+            height: 100vh;
           }
         </style>
       </head>
@@ -65,21 +60,25 @@ async function printAll() {
       year: "numeric",
     });
 
-    const htmlElement = await loadTemplate(entry.template, {
-      name: entry.name,
-      message: entry.message,
-      date,
-      title: "Грамота",
-      subtitle: "Почетная",
-      signature: "А. Ч. Бумбуль",
-      bg: "bg.svg",
-    });
+    try {
+      const htmlElement = await loadTemplate(entry.template, {
+        name: entry.name,
+        message: entry.message,
+        date,
+        title: "Грамота",
+        subtitle: "Почетная",
+        signature: "А. Ч. Бумбуль",
+        bg: "bg.svg",
+      });
 
-    const wrapper = document.createElement("div");
-    wrapper.className = "gramota";
-    wrapper.appendChild(htmlElement);
-
-    printWindow.document.body.appendChild(wrapper);
+      const wrapper = document.createElement("div");
+      wrapper.className = "gramota";
+      wrapper.appendChild(htmlElement);
+      printWindow.document.body.appendChild(wrapper);
+    } catch (error) {
+      console.error("Ошибка загрузки шаблона:", error);
+      printWindow.document.body.innerHTML += `<p>Ошибка при генерации грамоты для ${entry.name}</p>`;
+    }
   }
 
   printWindow.document.write("</body></html>");
@@ -95,7 +94,6 @@ function addEntry(entry = {}) {
   const card = document.createElement("div");
   card.className = "entry-card";
 
-  // Создание кастомного селектора шаблонов
   const templateSelect = document.createElement("div");
   templateSelect.className = "template-select";
   templateSelect.dataset.value = entry.template || "";
@@ -117,15 +115,13 @@ function addEntry(entry = {}) {
   templateSelect.appendChild(selectedValue);
   templateSelect.appendChild(options);
 
-  // Открытие/закрытие по клику на селектор
   templateSelect.addEventListener("click", () => {
     templateSelect.classList.toggle("open");
   });
 
-  // Выбор варианта
   options.querySelectorAll("li").forEach((li) => {
     li.addEventListener("click", (e) => {
-      e.stopPropagation(); // ← предотвращаем всплытие
+      e.stopPropagation();
       selectedValue.textContent = li.textContent;
       templateSelect.dataset.value = li.dataset.value;
       templateSelect.classList.remove("open");
@@ -133,21 +129,21 @@ function addEntry(entry = {}) {
     });
   });
 
-  // Закрытие при клике вне
   document.addEventListener("click", (e) => {
     if (!templateSelect.contains(e.target)) {
       templateSelect.classList.remove("open");
     }
   });
 
-  // Сборка карточки
   card.innerHTML = `
     <div class="field name">
       <input class="name-input" value="${entry.name || ""}" />
     </div>
     <div class="field"></div>
     <div class="field textaria">
-      <textarea class="message-input">${entry.message || ""}</textarea>
+      <div class="message-input" contenteditable="true">${
+        entry.message || ""
+      }</div>
     </div>
     <div class="actions">
       <button class="preview-entry">
@@ -167,10 +163,8 @@ function addEntry(entry = {}) {
     </div>
   `;
 
-  // Вставка кастомного селектора в карточку
   card.querySelectorAll(".field")[1].appendChild(templateSelect);
 
-  // События
   card.querySelector(".preview-entry").addEventListener("click", () => {
     previewEntry(card);
   });
@@ -186,8 +180,7 @@ function addEntry(entry = {}) {
 function previewEntry(card) {
   const name = card.querySelector(".name-input").value;
   const template = card.querySelector(".template-select").dataset.value;
-
-  const message = card.querySelector(".message-input").value;
+  const message = card.querySelector(".message-input").innerHTML;
 
   const date = new Date().toLocaleDateString("ru-RU", {
     day: "numeric",
@@ -217,18 +210,15 @@ function previewEntry(card) {
               padding: 0;
               background: white;
             }
-
-            @page {              
+            @page {
               margin: 0;
             }
-
             @media print {
               html, body {
                 width: 100%;
                 height: 100%;
                 overflow: hidden;
               }
-
               .gramota {
                 width: 100vw;
                 height: 100vh;
@@ -237,8 +227,7 @@ function previewEntry(card) {
             }
           </style>
         </head>
-        <body>
-        </body>
+        <body></body>
       </html>
     `);
 
@@ -253,7 +242,7 @@ function updateLocalStorageFromEntries() {
   const entries = Array.from(cards).map((card) => ({
     name: card.querySelector(".name-input").value,
     template: card.querySelector(".template-select").dataset.value,
-    message: card.querySelector(".message-input").value,
+    message: card.querySelector(".message-input").innerHTML,
   }));
   localStorage.setItem("gramotyData", JSON.stringify(entries));
 }
@@ -271,6 +260,6 @@ document.getElementById("add-entry").addEventListener("click", () => {
   updateLocalStorageFromEntries();
 });
 
-restoreEntriesFromStorage();
-
 document.getElementById("print-all").addEventListener("click", printAll);
+
+restoreEntriesFromStorage();

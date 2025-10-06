@@ -224,6 +224,12 @@ button:hover {
   justify-content: center;
 }
 
+.message-input {
+  resize: vertical;
+  overflow: auto;
+  color: white;
+}
+
 .textaria {
   order: 1;
   width: 100%;
