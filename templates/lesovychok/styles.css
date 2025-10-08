@@ -12,26 +12,70 @@ body {
   line-height: 1.4;
 }
 
-.lesovychok h1,
 .lesovychok h2 {
-  text-transform: uppercase;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
+  font-family: "Yanone Kaffeesatz", sans-serif;
+  font-size: 90px;
+  margin-bottom: 30px;
   text-align: center;
   user-select: none;
   line-height: 1;
+  color: #f18e5a;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+.lesovychok {
+  background-size: 115% !important;
+}
+
+.lesovychok .name2 {
+  margin: 20px auto;
+  font-size: 13px;
+  opacity: 0.5;
+}
+
+.lesovychok p {
+  text-align: center;
+  font-size: 18px;
+  font-family: "Caveat", cursive;
+  font-family: "Comfortaa", sans-serif;
+  line-height: 1.5;
+  color: #49322c;
+}
+
+.lesovychok .obeschaet {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+
+  font-size: 18px;
+  font-family: "Caveat", cursive;
+  font-family: "Comfortaa", sans-serif;
+  line-height: 1.5;
+}
+
+.lesovychok ul {
+  list-style: none;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* мягкая тень */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* мягкая тень */
+
+  background-color: rgba(178, 47, 65, 0.8);
+  font-family: "Caveat", cursive;
+  font-family: "Comfortaa", sans-serif;
+  font-size: 18px;
+
+  line-height: 1.5em;
+}
 .lesovychok h1 {
-  font-size: 72px;
-  color: #fcc201;
-  margin-bottom: 20px;
-}
+  font-size: 36px;
+  color: #49322c;
 
-.lesovychok h2 {
-  font-size: 48px;
-  color: #1b4d3e;
-  margin-bottom: 40px;
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
 }
 
 .lesovychok h3 {
@@ -44,7 +88,7 @@ body {
 }
 
 .lesovychok .name {
-  font-family: "Marck Script", cursive;
+  font-family: "Caveat", cursive;
   font-weight: 500;
   font-size: 48px;
   color: #000;
@@ -71,15 +115,15 @@ body {
   align-items: flex-end;
   position: absolute;
   left: 50%;
-  bottom: 150px;
+  bottom: 200px;
   transform: translateX(-50%);
 }
 
 .lesovychok .date,
 .lesovychok .signature {
-  font-family: "Lora", serif;
+  font-family: "Marck Script", cursive;
   font-style: italic;
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 100;
   color: #4f4c40;
   text-align: center;
@@ -89,6 +133,13 @@ body {
   user-select: none;
 }
 
+.lesovychok b {
+  font-family: "Yanone Kaffeesatz", sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  color: #b12f41;
+}
+
 .lesovychok .signature .name {
   font-size: 20px;
   margin-top: 0;
@@ -96,10 +147,10 @@ body {
 
 .lesovychok .date::after,
 .lesovychok .signature::after {
-  font-family: "Lora", serif;
+  font-family: "Marck Script", cursive;
   font-style: italic;
   font-weight: 100;
-  font-size: 10px;
+  font-size: 20px;
   position: absolute;
   left: 50%;
   top: 30px;
@@ -108,7 +159,6 @@ body {
 
 .lesovychok .date::after {
   content: "дата";
-  top: 20px;
 }
 
 .lesovychok .signature::after {
