@@ -6,6 +6,29 @@
   box-sizing: border-box;
 }
 
+.lesovychok .logoSt1,
+.lesovychok .logoSnow {
+  fill: #49322c;
+  animation: check_c_o 1000ms linear 1 normal forwards;
+}
+
+.lesovychok .logoSt0 {
+  fill: none;
+  stroke: #49322c;
+  stroke-width: 5;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 4240;
+  animation: strok2 2s linear;
+}
+
+.lesovychok .logo {
+  width: 180px;
+  position: absolute;
+  left: 126px;
+  top: 42px;
+  z-index: 1;
+}
+
 body {
   margin: 0;
   font-size: 16px;
