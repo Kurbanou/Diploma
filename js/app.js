@@ -6,6 +6,7 @@ const templateList = [
   { value: "gramota", label: "Грамота" },
   { value: "lesorub", label: "Лесоруб" },
   { value: "sertificate", label: "Sertificate" },
+  { value: "lesovychok", label: "Детский" },
 ];
 
 function getTemplateLabel(value) {
