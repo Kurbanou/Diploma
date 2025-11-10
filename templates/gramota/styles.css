@@ -58,9 +58,12 @@ body {
 .gramot .name {
   font-family: "Marck Script", cursive;
   font-weight: 500;
-  font-size: 72px;
+  font-size: 60px;
   color: #c49a3d;
   text-align: center;
+  width: 100%;
+  max-width: 90%;
+  line-height: 1.2;
 }
 
 .gramot .text {
@@ -73,12 +76,12 @@ body {
   line-height: 1.5em;
   width: 100%;
   max-width: 800px;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 .gramot .proff {
   color: #000000;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   font-family: "Montserrat", sans-serif;
   /* font-style: italic; */
@@ -86,7 +89,7 @@ body {
   line-height: 1.5em;
   width: 100%;
   max-width: 800px;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 40px;
 }
 
