@@ -24,7 +24,7 @@ body {
 
 .gramot h1 {
   font-size: 72px;
-  color: #132b44;
+  color: #000000;
   margin-bottom: 10px;
   /* background: linear-gradient(-135deg, #f7e27c 50%, #c49a3d 70%);
   -webkit-background-clip: text;
@@ -38,7 +38,7 @@ body {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 32px;
-  color: #132b44;
+  color: #000000;
   text-align: center;
   user-select: none;
   position: relative;
@@ -46,7 +46,7 @@ body {
 
 .gramot h3::after {
   content: "";
-  background-color: #132b44;
+  background-color: #000000;
   height: 3px;
   width: 80%;
   position: absolute;
@@ -76,7 +76,7 @@ body {
   margin-top: 20px;
 }
 .gramot .proff {
-  color: #132b44;
+  color: #000000;
   text-transform: uppercase;
   font-size: 16px;
   font-weight: 600;
@@ -107,10 +107,10 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #132b44;
+  color: #000000;
   text-align: center;
   width: 190px;
-  border-bottom: 1px solid #132b44;
+  border-bottom: 1px solid #000000;
   position: relative;
   user-select: none;
 }
