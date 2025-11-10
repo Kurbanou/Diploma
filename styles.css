@@ -112,6 +112,9 @@ body {
   font-size: inherit;
   line-height: inherit;
 }
+.label {
+  color: white;
+}
 
 .field input,
 .field select,

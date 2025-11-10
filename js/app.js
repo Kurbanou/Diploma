@@ -19,6 +19,7 @@ async function printAll() {
       name: card.querySelector(".name-input").value,
       template: card.querySelector(".template-select").dataset.value,
       message: card.querySelector(".message-input").innerHTML,
+      proffesion: card.querySelector(".proffesion-input").innerHTML,
     })
   );
 
@@ -65,6 +66,7 @@ async function printAll() {
       const htmlElement = await loadTemplate(entry.template, {
         name: entry.name,
         message: entry.message,
+        proffesion: entry.proffesion,
         date,
         title: "Грамота",
         subtitle: "Почетная",
@@ -138,12 +140,20 @@ function addEntry(entry = {}) {
 
   card.innerHTML = `
     <div class="field name">
+    <div class="label">Имя</div>
       <input class="name-input" value="${entry.name || ""}" />
     </div>
     <div class="field"></div>
     <div class="field textaria">
+    <div class="label">Поздравление</div>
       <div class="message-input" contenteditable="true">${
         entry.message || ""
+      }</div>
+    </div>
+    <div class="field textaria">
+    <div class="label">Должность</div>
+      <div class="message-input proffesion-input" contenteditable="true">${
+        entry.proffesion || ""
       }</div>
     </div>
     <div class="actions">
@@ -182,6 +192,7 @@ function previewEntry(card) {
   const name = card.querySelector(".name-input").value;
   const template = card.querySelector(".template-select").dataset.value;
   const message = card.querySelector(".message-input").innerHTML;
+  const proffesion = card.querySelector(".proffesion-input").innerHTML;
 
   const date = new Date().toLocaleDateString("ru-RU", {
     day: "numeric",
@@ -192,6 +203,7 @@ function previewEntry(card) {
   loadTemplate(template, {
     name,
     message,
+    proffesion,
     date,
     title: "Грамота",
     subtitle: "Почетная",
@@ -272,6 +284,7 @@ function updateLocalStorageFromEntries() {
     name: card.querySelector(".name-input").value,
     template: card.querySelector(".template-select").dataset.value,
     message: card.querySelector(".message-input").innerHTML,
+    proffesion: card.querySelector(".proffesion-input").innerHTML,
   }));
   localStorage.setItem("gramotyData", JSON.stringify(entries));
 }

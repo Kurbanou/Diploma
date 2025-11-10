@@ -12,6 +12,7 @@ async function loadTemplate(templateName, data) {
   const filledHtml = htmlText
     .replace("{ФИО}", data.name)
     .replace("{текст}", data.message)
+    .replace("{proffesion}", data.proffesion)
     .replace("{дата}", data.date)
     .replace("{заголовок}", data.title || "Грамота")
     .replace("{подзаголовок}", data.subtitle || "Почетная")
