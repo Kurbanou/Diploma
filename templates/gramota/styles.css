@@ -6,6 +6,29 @@
   box-sizing: border-box;
 }
 
+.gramot .logoSt1,
+.gramot .logoSnow {
+  fill: #ffffff;
+  animation: check_c_o 1000ms linear 1 normal forwards;
+}
+
+.gramot .logoSt0 {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 5;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 4240;
+  animation: strok2 2s linear;
+}
+
+.gramot .logo {
+  width: 110px;
+  position: absolute;
+  right: 115px;
+  top: 50px;
+  z-index: 1;
+}
+
 body {
   margin: 0;
   font-size: 16px;

@@ -5,6 +5,28 @@
   padding: 0;
   box-sizing: border-box;
 }
+.pochetnaja .logoSt1,
+.pochetnaja .logoSnow {
+  fill: #ffffff;
+  animation: check_c_o 1000ms linear 1 normal forwards;
+}
+
+.pochetnaja .logoSt0 {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 5;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 4240;
+  animation: strok2 2s linear;
+}
+
+.pochetnaja .logo {
+  width: 110px;
+  position: absolute;
+  right: 115px;
+  top: 50px;
+  z-index: 1;
+}
 
 body {
   margin: 0;
