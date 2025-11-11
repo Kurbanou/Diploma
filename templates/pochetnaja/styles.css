@@ -78,7 +78,7 @@ body {
 .pochetnaja h3::after {
   content: "";
   background-color: #000000;
-  height: 3px;
+  height: 2px;
   width: 80%;
   position: absolute;
   left: 50%;
