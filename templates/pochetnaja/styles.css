@@ -7,13 +7,13 @@
 }
 .pochetnaja .logoSt1,
 .pochetnaja .logoSnow {
-  fill: #d3a742;
+  fill: url(#goldGradient);
   animation: check_c_o 1000ms linear 1 normal forwards;
 }
 
 .pochetnaja .logoSt0 {
   fill: none;
-  stroke: #d3a742;
+  stroke: url(#goldGradient);
   stroke-width: 5;
   stroke-miterlimit: 10;
   stroke-dasharray: 4240;
