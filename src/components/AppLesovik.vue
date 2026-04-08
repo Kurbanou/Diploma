@@ -86,39 +86,11 @@ const formattedDate = computed(() => {
 
 <style scoped>
 .wrapper {
-  background: url(/public/images/lesovik.png) no-repeat;
+  background: url(/images/lesovik.png) no-repeat;
   position: relative;
   background-size: cover;
   display: flex;
   justify-content: center;
-}
-
-.lesovychok :deep(.logoSt1),
-.lesovychok .logoSnow {
-  fill: #49322c;
-}
-
-.lesovychok :deep(.logoSt0) {
-  fill: none;
-  stroke: #49322c;
-  stroke-width: 5;
-  stroke-miterlimit: 10;
-  stroke-dasharray: 4240;
-  animation: strok2 2s linear;
-}
-
-.lesovychok .logo {
-  width: 180px;
-  position: absolute;
-  left: 126px;
-  top: 42px;
-  z-index: 1;
-}
-
-.lesovychok .name2 {
-  margin: 20px auto;
-  font-size: 13px;
-  opacity: 0.5;
 }
 
 .lesovychok p {
@@ -129,26 +101,6 @@ const formattedDate = computed(() => {
   line-height: 1.8em;
   color: #543c0d;
   font-weight: 800;
-}
-
-.lesovychok .name {
-  font-family: 'Caveat', cursive;
-  font-weight: 500;
-  font-size: 48px;
-  color: #000;
-  text-align: center;
-}
-
-.lesovychok .text {
-  font-size: 18px;
-  font-family: 'Lora', serif;
-  font-style: italic;
-  color: #4f4c40;
-  text-align: center;
-  line-height: 1.5em;
-  width: 100%;
-  max-width: 800px;
-  margin-top: 20px;
 }
 
 .lesovychok .atribut {
@@ -181,11 +133,6 @@ const formattedDate = computed(() => {
   font-size: 28px;
   line-height: 1;
   color: #db5f0d;
-}
-
-.lesovychok .signature .name {
-  font-size: 20px;
-  margin-top: 0;
 }
 
 .lesovychok .date::after,

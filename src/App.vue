@@ -48,6 +48,9 @@ const handleUserUpdate = (updatedUser) => {
       </div>
       <div><el-button type="primary" @click="printCertificate">Печать</el-button></div>
     </el-row>
+    <div>
+      <history-panel />
+    </div>
   </div>
   <div class="inner">
     <app-gramota v-if="value === 'Option1'" :user="user" @update:user="handleUserUpdate" />

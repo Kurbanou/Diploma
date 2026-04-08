@@ -1,6 +1,7 @@
 <script setup>
 import { ref, nextTick, computed } from 'vue'
 import { formatDate } from '@/utils/dateFormatter'
+import { useHistory } from '@/composables/useHistory'
 import ru from 'element-plus/es/locale/lang/ru'
 import AppLogo from './icons/AppLogo.vue'
 
@@ -13,6 +14,9 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:user'])
+
+// История изменений текста
+const { history, addToHistory } = useHistory('certificate_text_history')
 
 // Состояние редактирования
 const editing = ref({ field: null })
@@ -30,10 +34,23 @@ const startEditing = async (field) => {
 // Сохранить изменения
 const saveEdit = () => {
   if (editing.value.field && editValue.value !== undefined) {
+    const oldValue = props.user[editing.value.field]
+    const newValue = editValue.value
+
     // Создаём обновлённый объект
     const updatedUser = {
       ...props.user,
       [editing.value.field]: editValue.value,
+    }
+
+    // Если изменилось поле 'text' — сохраняем в историю
+    if (editing.value.field === 'text' && oldValue !== newValue) {
+      addToHistory({
+        text: newValue,
+        previousText: oldValue,
+        name: props.user.name,
+        profession: props.user.profession,
+      })
     }
 
     // Отправляем событие родителю
@@ -45,8 +62,10 @@ const saveEdit = () => {
 const formattedDate = computed(() => {
   return formatDate(props.user.date, true)
 })
-</script>
 
+// Для отладки — можно посмотреть историю в консоли
+console.log('История текстов:', history.value)
+</script>
 <template>
   <div class="certificate">
     <div class="wrapper gramot">
@@ -120,7 +139,7 @@ const formattedDate = computed(() => {
 
 <style scoped>
 .wrapper {
-  background: url(/public/images/gramota.png) no-repeat;
+  background: url(/images/gramota.png) no-repeat;
   position: relative;
   background-size: cover;
   display: flex;
