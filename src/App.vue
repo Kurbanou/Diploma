@@ -4,6 +4,7 @@ import AppGramota from './components/AppGramota.vue'
 import AppLesovik from './components/AppLesovik.vue'
 
 const value = ref('Option1')
+const value5 = ref(false)
 const options = [
   {
     value: 'Option1',
@@ -46,10 +47,20 @@ const handleUserUpdate = (updatedUser) => {
           />
         </el-select>
       </div>
+      <div>
+        <el-switch
+          v-model="value5"
+          class="ml-2"
+          width="80"
+          inline-prompt
+          active-text="pozdravok"
+          inactive-text="pozdravok"
+        />
+      </div>
       <div><el-button type="primary" @click="printCertificate">Печать</el-button></div>
     </el-row>
     <div>
-      <history-panel />
+      <history-panel v-if="value5" />
     </div>
   </div>
   <div class="inner">
@@ -61,9 +72,13 @@ const handleUserUpdate = (updatedUser) => {
 
 <style>
 .non-print {
-  padding: 30px 0 0 0;
+  position: relative;
+  padding: 30px 20px 0 20px;
   display: flex;
   justify-content: center;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
   margin-bottom: 30px;
 }
 .non-print .el-row {

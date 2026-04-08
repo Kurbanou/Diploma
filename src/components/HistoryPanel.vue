@@ -17,7 +17,7 @@ const handleRemove = (id, text) => {
   <el-card class="history-panel">
     <template #header>
       <div style="display: flex; justify-content: space-between; align-items: center">
-        <span>📜 История поздравлений ({{ history.length }})</span>
+        <span>📜 Варианты поздравлений ({{ history.length }})</span>
         <el-button v-if="history.length > 0" size="small" type="danger" @click="clearHistory">
           Очистить всё
         </el-button>
@@ -59,8 +59,13 @@ const handleRemove = (id, text) => {
 
 <style scoped>
 .history-panel {
+  position: absolute;
+  z-index: 1;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
   margin-top: 20px;
-  max-width: 600px;
+  width: 95%;
 }
 .history-item {
   display: flex;
