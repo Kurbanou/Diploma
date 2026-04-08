@@ -22,6 +22,7 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
   ],
+  base: '/Diploma/', // 👈 ДОБАВЬТЕ ЭТУ СТРОКУ (слеш в начале и конце)
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
