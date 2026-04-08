@@ -1,0 +1,132 @@
+<script setup>
+import { ref } from 'vue'
+import AppGramota from './components/AppGramota.vue'
+import AppLesovik from './components/AppLesovik.vue'
+
+const value = ref('Option1')
+const options = [
+  {
+    value: 'Option1',
+    label: 'грамота',
+  },
+
+  {
+    value: 'Option2',
+    label: 'диплом юного лесовода',
+  },
+]
+
+const printCertificate = () => {
+  window.print()
+}
+
+const user = ref({
+  name: 'Имя Фамилия',
+  profession: 'должность',
+  text: 'За добросовестный и многолетний труд в лесном хозяйстве, сохранение и приумножение лесных богатств, образцовое выполнение трудовых обязанностей',
+  date: new Date().toISOString().split('T')[0],
+})
+
+const handleUserUpdate = (updatedUser) => {
+  user.value = updatedUser
+}
+</script>
+
+<template>
+  <div class="non-print">
+    <el-row :gutter="20" justify="center">
+      <div>
+        <el-select v-model="value" placeholder="Select" style="width: 240px">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+            :disabled="item.disabled"
+          />
+        </el-select>
+      </div>
+      <div><el-button type="primary" @click="printCertificate">Печать</el-button></div>
+    </el-row>
+  </div>
+  <div class="inner">
+    <app-gramota v-if="value === 'Option1'" :user="user" @update:user="handleUserUpdate" />
+
+    <app-lesovik v-if="value === 'Option2'" :user="user" @update:user="handleUserUpdate" />
+  </div>
+</template>
+
+<style>
+.non-print {
+  padding: 30px 0 0 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.non-print .el-row {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  gap: 20px;
+}
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.inner {
+  width: 100%;
+  max-width: 1240px;
+  padding: 0 20px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.wrapper {
+  width: 297mm;
+  height: 210mm;
+  page-break-after: always;
+  transform: scale(clamp(0.3, 100vw / 1550px, 0.8));
+  transform-origin: center top;
+}
+
+@media print {
+  body {
+    margin: 0;
+  }
+  .inner {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .certificate {
+    scale: 1;
+  }
+  .wrapper {
+    width: 297mm;
+    height: 210mm;
+    page-break-after: always;
+    transform: scale(1);
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .non-print {
+    display: none;
+  }
+}
+</style>
