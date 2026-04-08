@@ -1,64 +1,21 @@
-<!DOCTYPE html>
-<html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Diploma</title>
-        <link rel="stylesheet" href="././assets/css/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    </head>
-<body>
-    <header>
-        <div class="controls">
-            <a class="fisrt" href="javascript:void(0);">1</a>
-            <a class="second" href="javascript:void(0);">2</a>
-            <a class="third" href="javascript:void(0);">?</a>
-            <button onclick="window.print()" class="print-button"><span class="print-icon"></span></button>
-        </div> 
-    </header>
-    <main>     
-        <div class="wrapper" style="max-width: 297mm;">
-            <div id="section-to-print" class="container" style="background-image: url(/assets/img/svg/bg.svg); background-size: contain; width: 297mm; height: 210mm;">
-                <h1 >грамота</h1>
-                <h2 >Почетная</h2>
-                <h3 >Награждается:</h3>
-                <div class="name field">Name Surname</div>
-                <div class="text field">
-                    За добросовестный и плодотворный труд в лесном хозяйстве, достижение высоких результатов по использованию, охране, защите лесного фонда и воспроизводству лесов и в связи с профессиональным праздником "Днём работников леса"
-                </div>
-                <div class="atribut">
-                    <div class="date"></div>
-                    <div class="signature"><div class="name">А. Ч. Бумбуль</div> </div>
-                </div>   
-            </div>
-        </div>
-    </main>
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-
-
-    <!-- popup is here -->
-    <div class="popup">
-        <div class="popup__body">
-            <div class="popup__content">
-                <div class="cls"><span class="x  reset">×</span></div>
-                <div >
-                    <form action="#" class="form">
-                        <textarea class="input" cols="30" rows="10"></textarea>
-                        <button class="button">Ok</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-<script src="././assets/js/index.js"></script>
+    <!-- Все нужные шрифты в одной ссылке -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Comfortaa:wght@300..700&family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&family=Pacifico&family=Sofia+Sans+Extra+Condensed:ital,wght@0,1..1000;1,1..1000&family=Yanone+Kaffeesatz:wght@200..700&family=Caveat:wght@400..700&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
