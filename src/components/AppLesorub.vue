@@ -14,6 +14,29 @@ const props = defineProps({
 
 const emit = defineEmits(['update:user'])
 
+// определить место
+
+const placeVariants = {
+  first: ['1 место', 'i место', 'первое место', '1-е место', 'Ⅰ место'],
+  second: ['2 место', 'ii место', 'второе место', '2-е место', 'Ⅱ место'],
+  third: ['3 место', 'iii место', 'третье место', '3-е место', 'Ⅲ место'],
+}
+
+// Определяем тип места по тексту
+const placeType = (sometext) => {
+  if (!sometext) return
+  const normalized = sometext.toLowerCase().trim()
+  for (const [place, variants] of Object.entries(placeVariants)) {
+    if (variants.some((v) => normalized.includes(v.toLowerCase()))) {
+      return place
+    }
+  }
+  return null
+}
+
+// Текущее место (для отображения лого)
+const currentPlace = computed(() => placeType(props.user.text))
+
 // История изменений текста
 const { history, addToHistory } = useHistory('certificate_text_history')
 
@@ -61,29 +84,16 @@ const saveEdit = () => {
 const formattedDate = computed(() => {
   return formatDate(props.user.date, true)
 })
-
-// Для отладки — можно посмотреть историю в консоли
-console.log('История текстов:', history.value)
 </script>
 <template>
   <div class="certificate">
     <div class="wrapper gramot">
       <div class="logo">
-        <app-logo />
+        <img v-if="currentPlace === 'first'" src="/images/1st.png" alt="1 место" />
+        <img v-else-if="currentPlace === 'second'" src="/images/2st.png" alt="2 место" />
+        <img v-else-if="currentPlace === 'third'" src="/images/3st.png" alt="3 место" />
       </div>
       <div id="section-to-print" class="container">
-        <!-- Профессия -->
-        <div class="prof field" @dblclick="startEditing('profession')">
-          <el-input
-            v-if="editing.field === 'profession'"
-            v-model="editValue"
-            @blur="saveEdit"
-            @keyup.enter="saveEdit"
-            ref="inputRef"
-          />
-          <span v-else>{{ user.profession }}</span>
-        </div>
-
         <!-- Имя -->
         <div class="name field" @dblclick="startEditing('name')">
           <el-input
@@ -106,7 +116,7 @@ console.log('История текстов:', history.value)
             @blur="saveEdit"
             @keyup.ctrl.enter="saveEdit"
             ref="inputRef"
-            rows="4"
+            :rows="4"
           ></el-input>
           <span v-else>{{ user.text }}</span>
         </div>
@@ -131,6 +141,7 @@ console.log('История текстов:', history.value)
           </div>
           <div class="signature">А. Ч. Бумбуль</div>
         </div>
+        <div class="footer">ЛЕСОРУБ {{ new Date().getFullYear() }}</div>
       </div>
     </div>
   </div>
@@ -151,7 +162,7 @@ console.log('История текстов:', history.value)
 
   max-width: 600px;
   height: 80%;
-  margin-top: 270px;
+  margin: 300px 0 0 220px;
 }
 
 .gramot .atribut {
@@ -161,30 +172,20 @@ console.log('История текстов:', history.value)
   width: 100%;
   margin-top: 20px;
   position: absolute;
-  bottom: 200px;
-}
-.gramot :deep(.logoSt1),
-.gramot :deep(.logoSnow) {
-  fill: #bb8c4b;
-  /* fill: url(#goldGradient); */
-}
-
-.gramot :deep(.logoSt0) {
-  fill: none;
-  stroke: #bb8c4b;
-  /* stroke: url(#goldGradient); */
-  stroke-width: 8;
-  stroke-miterlimit: 10;
-  stroke-dasharray: 4240;
-  animation: strok2 2s linear;
+  bottom: 150px;
 }
 
 .gramot .logo {
-  width: 140px;
+  width: 240px;
   position: absolute;
-  right: 90px;
-  top: 100px;
+  left: 100px;
+  top: 78px;
   z-index: 1;
+}
+
+.gramot .logo img {
+  display: block;
+  width: 100%;
 }
 
 .gramot h1,
@@ -200,11 +201,11 @@ console.log('История текстов:', history.value)
 .gramot .name {
   font-family: 'Marck Script', cursive;
   font-weight: 500;
-  font-size: 60px;
-  color: #bb8c4b;
+  font-size: 3em;
+  color: #b46a21;
   text-align: center;
   width: 100%;
-  max-width: 90%;
+  /* max-width: 90%; */
   line-height: 1.2;
   margin: 30px 0;
 }
@@ -213,15 +214,25 @@ console.log('История текстов:', history.value)
   font-size: 18px;
   font-family: 'Lora', serif;
   font-style: italic;
-  color: #49634a;
+  color: black;
   text-align: center;
   line-height: 1.5em;
   width: 100%;
   max-width: 800px;
 }
 
+.footer {
+  font-family: 'Marck Script', cursive;
+  font-family: 'Montserrat', sans-serif;
+  color: #b46a21;
+  font-size: 1.5em;
+  position: absolute;
+  bottom: 40px;
+  font-weight: bold;
+}
+
 .gramot .prof {
-  color: #49634a;
+  color: black;
   font-size: 1em;
   font-weight: 400;
   font-family: 'Lora', serif;
@@ -236,12 +247,13 @@ console.log('История текстов:', history.value)
 .gramot .signature {
   position: relative;
   font-family: 'Lora', serif;
+  font-family: 'Marck Script', cursive;
   font-style: italic;
 
-  color: #49634a;
+  color: black;
   text-align: center;
   width: 190px;
-  border-bottom: 1px solid #49634a;
+  border-bottom: 1px solid black;
 
   user-select: none;
 }
@@ -249,7 +261,7 @@ console.log('История текстов:', history.value)
 .gramot .date::after,
 .gramot .signature::after {
   font-family: 'Lora', serif;
-  /* font-style: italic; */
+  font-family: 'Marck Script', cursive;
   position: absolute;
   left: 50%;
   top: 20px;

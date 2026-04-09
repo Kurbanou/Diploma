@@ -107,7 +107,7 @@ console.log('История текстов:', history.value)
             @blur="saveEdit"
             @keyup.ctrl.enter="saveEdit"
             ref="inputRef"
-            rows="4"
+            :rows="4"
           ></el-input>
           <span v-else>{{ user.text }}</span>
         </div>
