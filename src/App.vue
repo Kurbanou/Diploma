@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import AppGramota from './components/AppGramota.vue'
+import AppGramotaPochetnaja from './components/AppGramotaPochetnaja.vue'
 import AppLesovik from './components/AppLesovik.vue'
 
 const value = ref('Option1')
@@ -10,9 +11,13 @@ const options = [
     value: 'Option1',
     label: 'грамота',
   },
-
   {
     value: 'Option2',
+    label: 'почетная грамота',
+  },
+
+  {
+    value: 'Option3',
     label: 'диплом юного лесовода',
   },
 ]
@@ -65,8 +70,13 @@ const handleUserUpdate = (updatedUser) => {
   </div>
   <div class="inner">
     <app-gramota v-if="value === 'Option1'" :user="user" @update:user="handleUserUpdate" />
+    <app-gramota-pochetnaja
+      v-if="value === 'Option2'"
+      :user="user"
+      @update:user="handleUserUpdate"
+    />
 
-    <app-lesovik v-if="value === 'Option2'" :user="user" @update:user="handleUserUpdate" />
+    <app-lesovik v-if="value === 'Option3'" :user="user" @update:user="handleUserUpdate" />
   </div>
 </template>
 

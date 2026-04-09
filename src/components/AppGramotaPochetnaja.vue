@@ -139,7 +139,7 @@ console.log('История текстов:', history.value)
 
 <style scoped>
 .wrapper {
-  background: url(/images/gramota.png) no-repeat;
+  background: url(/images/gramota-pochetnaja.png) no-repeat;
   position: relative;
   background-size: cover;
   display: flex;
