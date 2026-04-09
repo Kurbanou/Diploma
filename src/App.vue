@@ -4,6 +4,7 @@ import AppGramota from './components/AppGramota.vue'
 import AppGramotaPochetnaja from './components/AppGramotaPochetnaja.vue'
 import AppLesovik from './components/AppLesovik.vue'
 import AppBlagodarnost from './components/AppBlagodarnost.vue'
+import AppLesorub from './components/AppLesorub.vue'
 
 const value = ref('Option1')
 const value5 = ref(false)
@@ -24,6 +25,10 @@ const options = [
   {
     value: 'Option4',
     label: 'благодарность',
+  },
+  {
+    value: 'Option5',
+    label: 'лесоруб',
   },
 ]
 
@@ -85,6 +90,8 @@ const handleUserUpdate = (updatedUser) => {
     <app-lesovik v-if="value === 'Option3'" :user="user" @update:user="handleUserUpdate" />
 
     <app-blagodarnost v-if="value === 'Option4'" :user="user" @update:user="handleUserUpdate" />
+
+    <app-lesorub v-if="value === 'Option5'" :user="user" @update:user="handleUserUpdate" />
   </div>
 </template>
 
