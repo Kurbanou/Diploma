@@ -255,6 +255,7 @@ console.log('История текстов:', history.value)
   left: 50%;
   top: 20px;
   transform: translate(-50%, 0%);
+  width: 200%;
 }
 
 .gramot .date::after {
@@ -262,6 +263,6 @@ console.log('История текстов:', history.value)
 }
 
 .gramot .signature::after {
-  content: 'директор';
+  content: 'директор Скидельского лесхоза';
 }
 </style>
