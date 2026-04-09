@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import AppGramota from './components/AppGramota.vue'
 import AppGramotaPochetnaja from './components/AppGramotaPochetnaja.vue'
 import AppLesovik from './components/AppLesovik.vue'
+import AppBlagodarnost from './components/AppBlagodarnost.vue'
 
 const value = ref('Option1')
 const value5 = ref(false)
@@ -19,6 +20,10 @@ const options = [
   {
     value: 'Option3',
     label: 'диплом юного лесовода',
+  },
+  {
+    value: 'Option4',
+    label: 'благодарность',
   },
 ]
 
@@ -70,6 +75,7 @@ const handleUserUpdate = (updatedUser) => {
   </div>
   <div class="inner">
     <app-gramota v-if="value === 'Option1'" :user="user" @update:user="handleUserUpdate" />
+
     <app-gramota-pochetnaja
       v-if="value === 'Option2'"
       :user="user"
@@ -77,6 +83,8 @@ const handleUserUpdate = (updatedUser) => {
     />
 
     <app-lesovik v-if="value === 'Option3'" :user="user" @update:user="handleUserUpdate" />
+
+    <app-blagodarnost v-if="value === 'Option4'" :user="user" @update:user="handleUserUpdate" />
   </div>
 </template>
 

@@ -214,7 +214,7 @@ console.log('История текстов:', history.value)
   font-size: 18px;
   font-family: 'Lora', serif;
   font-style: italic;
-  color: black;
+  color: #49634a;
   text-align: center;
   line-height: 1.5em;
   width: 100%;
@@ -222,7 +222,7 @@ console.log('История текстов:', history.value)
 }
 
 .gramot .prof {
-  color: #bb8c4b;
+  color: #49634a;
   font-size: 1em;
   font-weight: 400;
   font-family: 'Lora', serif;
@@ -239,10 +239,10 @@ console.log('История текстов:', history.value)
   font-family: 'Lora', serif;
   font-style: italic;
 
-  color: black;
+  color: #49634a;
   text-align: center;
   width: 190px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #49634a;
 
   user-select: none;
 }

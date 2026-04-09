@@ -3,7 +3,6 @@ import { ref, nextTick, computed } from 'vue'
 import { formatDate } from '@/utils/dateFormatter'
 import { useHistory } from '@/composables/useHistory'
 import ru from 'element-plus/es/locale/lang/ru'
-import AppLogo from './icons/AppLogo.vue'
 
 const props = defineProps({
   user: {
@@ -69,9 +68,6 @@ console.log('История текстов:', history.value)
 <template>
   <div class="certificate">
     <div class="wrapper gramot">
-      <div class="logo">
-        <app-logo />
-      </div>
       <div id="section-to-print" class="container">
         <!-- Профессия -->
         <div class="prof field" @dblclick="startEditing('profession')">
@@ -139,7 +135,7 @@ console.log('История текстов:', history.value)
 
 <style scoped>
 .wrapper {
-  background: url(/images/gramota.png) no-repeat;
+  background: url(/images/blagodarnost.png) no-repeat;
   position: relative;
   background-size: cover;
   display: flex;
@@ -164,45 +160,12 @@ console.log('История текстов:', history.value)
   position: absolute;
   bottom: 200px;
 }
-.gramot :deep(.logoSt1),
-.gramot :deep(.logoSnow) {
-  fill: #bb8c4b;
-  /* fill: url(#goldGradient); */
-}
-
-.gramot :deep(.logoSt0) {
-  fill: none;
-  stroke: #bb8c4b;
-  /* stroke: url(#goldGradient); */
-  stroke-width: 8;
-  stroke-miterlimit: 10;
-  stroke-dasharray: 4240;
-  animation: strok2 2s linear;
-}
-
-.gramot .logo {
-  width: 140px;
-  position: absolute;
-  right: 90px;
-  top: 100px;
-  z-index: 1;
-}
-
-.gramot h1,
-.gramot h2 {
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  text-align: center;
-  user-select: none;
-  line-height: 1;
-}
 
 .gramot .name {
   font-family: 'Marck Script', cursive;
   font-weight: 500;
   font-size: 60px;
-  color: #bb8c4b;
+  color: #bc984a;
   text-align: center;
   width: 100%;
   max-width: 90%;
@@ -238,11 +201,10 @@ console.log('История текстов:', history.value)
   position: relative;
   font-family: 'Lora', serif;
   font-style: italic;
-
   color: #49634a;
   text-align: center;
   width: 190px;
-  border-bottom: 1px solid #49634a;
+  border-bottom: 1px solid gray;
 
   user-select: none;
 }
