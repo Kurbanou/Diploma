@@ -3,7 +3,8 @@
 import { useHistory } from '@/composables/useHistory'
 import { ref } from 'vue'
 
-const { history, removeFromHistory, clearHistory } = useHistory('certificate_text_history')
+// const { history, removeFromHistory, clearHistory } = useHistory('certificate_text_history')
+const { history, removeFromHistory } = useHistory('certificate_text_history')
 
 // Для отслеживания какая карточка скопирована
 const copiedId = ref(null)
@@ -18,6 +19,7 @@ const copyTextToClipboard = async (text, id) => {
       copiedId.value = null
     }, 1500)
   } catch (err) {
+    console.log(err)
     fallbackCopyText(text, id)
   }
 }
@@ -49,9 +51,9 @@ const handleRemove = (id, text, event) => {
     <template #header>
       <div style="display: flex; justify-content: space-between; align-items: center">
         <span>📜 Варианты поздравлений ({{ history.length }})</span>
-        <el-button v-if="history.length > 0" size="small" type="danger" @click="clearHistory">
+        <!-- <el-button v-if="history.length > 0" size="small" type="danger" @click="clearHistory">
           Очистить всё
-        </el-button>
+        </el-button> -->
       </div>
     </template>
 
@@ -112,10 +114,6 @@ const handleRemove = (id, text, event) => {
   transition: all 0.2s ease;
   position: relative;
   overflow: hidden;
-}
-
-.history-card:hover {
-  background: linear-gradient(90deg, rgba(64, 158, 255, 0.1) 0%, rgba(64, 158, 255, 0) 100%);
 }
 
 .card-copied {

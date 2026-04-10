@@ -20,10 +20,10 @@ export function useHistory(key) {
     history.value = history.value.filter((item) => item.id !== id)
   }
 
-  // Очистить всю историю
-  const clearHistory = () => {
-    history.value = []
-  }
+  // // Очистить всю историю
+  // const clearHistory = () => {
+  //   history.value = []
+  // }
 
   // Автосохранение в localStorage
   watch(
@@ -34,5 +34,6 @@ export function useHistory(key) {
     { deep: true },
   )
 
-  return { history, addToHistory, removeFromHistory, clearHistory }
+  // return { history, addToHistory, removeFromHistory, clearHistory }
+  return { history, addToHistory, removeFromHistory }
 }
