@@ -46,6 +46,13 @@ const user = ref({
 const handleUserUpdate = (updatedUser) => {
   user.value = updatedUser
 }
+
+// Закрыть панель с задержкой
+const closeHistoryPanel = () => {
+  setTimeout(() => {
+    value5.value = false
+  }, 500)
+}
 </script>
 
 <template>
@@ -75,7 +82,7 @@ const handleUserUpdate = (updatedUser) => {
       <div><el-button type="primary" @click="printCertificate">Печать</el-button></div>
     </el-row>
     <div>
-      <history-panel v-if="value5" />
+      <history-panel v-if="value5" @update:value="closeHistoryPanel" />
     </div>
   </div>
   <div class="inner">

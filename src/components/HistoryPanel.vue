@@ -44,6 +44,13 @@ const handleRemove = (id, text, event) => {
     removeFromHistory(id)
   }
 }
+
+const emits = defineEmits(['update:value'])
+// Добавьте функцию-обработчик
+const handleCardClick = (text, id) => {
+  copyTextToClipboard(text, id)
+  emits('update:value')
+}
 </script>
 
 <template>
@@ -72,7 +79,7 @@ const handleRemove = (id, text, event) => {
           shadow="hover"
           class="history-card"
           :class="{ 'card-copied': copiedId === item.id }"
-          @click="copyTextToClipboard(item.text, item.id)"
+          @click="handleCardClick(item.text, item.id)"
         >
           <div class="history-item">
             <div class="history-content">
