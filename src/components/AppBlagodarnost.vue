@@ -261,7 +261,7 @@ h2 {
   color: var(--colorLite);
   text-align: center;
   width: 250px;
-  border-bottom: 2px solid #a47237;
+  border-bottom: 1px solid #a47237;
   padding-bottom: 4px;
   user-select: none;
 }
