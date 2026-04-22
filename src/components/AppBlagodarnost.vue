@@ -196,7 +196,11 @@ h1 {
 
 h2 {
   font-family: 'Great Vibes', cursive;
-  font-size: 50px;
+  font-family: 'Marck Script', cursive;
+  font-family: 'Lora', serif;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 30px;
   line-height: 1;
   margin-top: 20px;
   font-weight: 400;
@@ -215,8 +219,9 @@ h2 {
 
 .gramot .name {
   font-family: 'Marck Script', cursive;
+  font-family: 'Great Vibes', cursive;
   font-weight: 500;
-  font-size: 50px;
+  font-size: 60px;
   color: var(--colorDark);
 
   text-align: center;

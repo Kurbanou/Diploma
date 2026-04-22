@@ -73,6 +73,8 @@ console.log('История текстов:', history.value)
         <app-logo />
       </div>
       <div id="section-to-print" class="container">
+        <h1>ГРАМОТА</h1>
+        <h2>Награждается</h2>
         <!-- Профессия -->
         <div class="prof field" @dblclick="startEditing('profession')">
           <el-input
@@ -139,7 +141,7 @@ console.log('История текстов:', history.value)
 
 <style scoped>
 .wrapper {
-  background: url(/images/gramota.png) no-repeat;
+  background: url(/images/blagodarnost2.png) no-repeat;
   position: relative;
   background-size: cover;
   display: flex;
@@ -152,28 +154,18 @@ console.log('История текстов:', history.value)
 
   max-width: 600px;
   height: 80%;
-  margin-top: 270px;
 }
 
-.gramot .atribut {
-  display: flex;
-  justify-content: space-between;
-  max-width: 500px;
-  width: 100%;
-  margin-top: 20px;
-  position: absolute;
-  bottom: 200px;
-}
 .gramot :deep(.logoSt1),
 .gramot :deep(.logoSnow) {
-  fill: #bb8c4b;
-  /* fill: url(#goldGradient); */
+  fill: #bc984a;
+  fill: url(#goldGradient);
 }
 
 .gramot :deep(.logoSt0) {
   fill: none;
-  stroke: #bb8c4b;
-  /* stroke: url(#goldGradient); */
+  stroke: #bc984a;
+  stroke: url(#goldGradient);
   stroke-width: 8;
   stroke-miterlimit: 10;
   stroke-dasharray: 4240;
@@ -181,48 +173,80 @@ console.log('История текстов:', history.value)
 }
 
 .gramot .logo {
-  width: 140px;
+  width: 120px;
   position: absolute;
-  right: 90px;
-  top: 100px;
+  left: 54px;
+  top: 80px;
   z-index: 1;
 }
 
-.gramot h1,
-.gramot h2 {
-  text-transform: uppercase;
+h1 {
+  /* font-family: 'Marck Script', cursive;
+  font-family: 'Pacifico', cursive; */
+  font-family: 'Lora', serif;
+  /* font-family: 'Great Vibes', cursive;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  text-align: center;
-  user-select: none;
+  font-family: 'Comfortaa', cursive; */
+  font-size: 60px;
   line-height: 1;
+  margin-top: 80px;
+  font-weight: 500;
+  color: var(--colorDark);
+}
+
+h2 {
+  font-family: 'Great Vibes', cursive;
+  font-family: 'Marck Script', cursive;
+  font-family: 'Lora', serif;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 30px;
+  line-height: 1;
+  margin-top: 20px;
+  font-weight: 400;
+  color: var(--colorLite);
+}
+
+.gramot .atribut {
+  display: flex;
+  justify-content: space-between;
+  max-width: 700px;
+  width: 100%;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 144px;
 }
 
 .gramot .name {
   font-family: 'Marck Script', cursive;
+  font-family: 'Great Vibes', cursive;
   font-weight: 500;
-  font-size: 50px;
-  color: #bb8c4b;
+  font-size: 60px;
+  color: var(--colorDark);
+
   text-align: center;
   width: 100%;
   max-width: 90%;
   line-height: 1;
-  margin: 30px 0;
+  margin-top: 60px;
+  border-bottom: 2px solid #a47237;
+  padding-bottom: 12px;
 }
 
 .gramot .text {
   font-size: 18px;
   font-family: 'Lora', serif;
   font-style: italic;
-  color: #49634a;
+  color: var(--colorLite);
   text-align: center;
   line-height: 1.5em;
   width: 100%;
   max-width: 800px;
+  margin-top: 20px;
 }
 
 .gramot .prof {
-  color: #49634a;
+  color: var(--colorLite);
   font-size: 1em;
   font-weight: 400;
   font-family: 'Lora', serif;
@@ -231,6 +255,7 @@ console.log('История текстов:', history.value)
   line-height: 1.5em;
   width: 100%;
   max-width: 600px;
+  margin-top: 10px;
 }
 
 .gramot .date,
@@ -238,12 +263,11 @@ console.log('История текстов:', history.value)
   position: relative;
   font-family: 'Lora', serif;
   font-style: italic;
-
-  color: #49634a;
+  color: var(--colorLite);
   text-align: center;
-  width: 190px;
-  border-bottom: 1px solid #49634a;
-
+  width: 250px;
+  border-bottom: 1px solid #a47237;
+  padding-bottom: 4px;
   user-select: none;
 }
 
@@ -253,9 +277,9 @@ console.log('История текстов:', history.value)
   /* font-style: italic; */
   position: absolute;
   left: 50%;
-  top: 20px;
+  top: 28px;
   transform: translate(-50%, 0%);
-  width: 200%;
+  width: 100%;
 }
 
 .gramot .date::after {
