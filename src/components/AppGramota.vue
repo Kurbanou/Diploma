@@ -201,12 +201,12 @@ console.log('История текстов:', history.value)
 .gramot .name {
   font-family: 'Marck Script', cursive;
   font-weight: 500;
-  font-size: 60px;
+  font-size: 50px;
   color: #bb8c4b;
   text-align: center;
   width: 100%;
   max-width: 90%;
-  line-height: 1.2;
+  line-height: 1;
   margin: 30px 0;
 }
 

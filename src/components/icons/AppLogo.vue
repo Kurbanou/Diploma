@@ -9,10 +9,11 @@
         y2="0%"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0%" stop-color="#f7e27c" />
-        <stop offset="50%" stop-color="#f7e27c" />
-        <stop offset="75%" stop-color="#c49a3d" />
-        <stop offset="100%" stop-color="#c49a3d" />
+        <stop offset="0%" stop-color="#a47237" />
+        <stop offset="30%" stop-color="#dfb651" />
+        <stop offset="50%" stop-color="#eed67d" />
+        <stop offset="70%" stop-color="#dfb651" />
+        <stop offset="100%" stop-color="#a47237" />
       </linearGradient>
     </defs>
 

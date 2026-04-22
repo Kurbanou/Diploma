@@ -37,7 +37,7 @@ const printCertificate = () => {
 }
 
 const user = ref({
-  name: 'Имя Фамилия',
+  name: 'Иван Иванов Иванович',
   profession: 'должность',
   text: 'За добросовестный и многолетний труд в лесном хозяйстве, сохранение и приумножение лесных богатств, образцовое выполнение трудовых обязанностей',
   date: new Date().toISOString().split('T')[0],
@@ -103,6 +103,10 @@ const closeHistoryPanel = () => {
 </template>
 
 <style>
+:root {
+  --colorDark: #a47237;
+  --colorLite: #3a5c47;
+}
 .non-print {
   position: relative;
   padding: 30px 20px 0 20px;
