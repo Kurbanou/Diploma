@@ -2,6 +2,7 @@
 import { ref, nextTick, computed } from 'vue'
 import { formatDate } from '@/utils/dateFormatter'
 import { useHistory } from '@/composables/useHistory'
+import AppPila from './icons/AppPila.vue'
 import ru from 'element-plus/es/locale/lang/ru'
 
 const props = defineProps({
@@ -87,13 +88,15 @@ const formattedDate = computed(() => {
 </script>
 <template>
   <div class="certificate">
-    <div class="wrapper gramot">
+    <div class="wrapperLetter gramot">
       <div class="logo">
         <img v-if="currentPlace === 'first'" src="/images/1st.png" alt="1 место" />
         <img v-else-if="currentPlace === 'second'" src="/images/2st.png" alt="2 место" />
         <img v-else-if="currentPlace === 'third'" src="/images/3st.png" alt="3 место" />
       </div>
       <div id="section-to-print" class="container">
+        <h1>ДИПЛОМ</h1>
+        <h2>Награждается</h2>
         <!-- Имя -->
         <div class="name field" @dblclick="startEditing('name')">
           <el-input
@@ -141,28 +144,46 @@ const formattedDate = computed(() => {
           </div>
           <div class="signature">А. Ч. Бумбуль</div>
         </div>
-        <div class="footer">ЛЕСОРУБ {{ new Date().getFullYear() }}</div>
+        <div class="footer">
+          <app-pila />
+          <div class="descr">ЛЕСОРУБ {{ new Date().getFullYear() }}</div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.wrapper {
+.wrapperLetter {
   background: url(/images/lesorub.png) no-repeat;
   position: relative;
   background-size: cover;
   display: flex;
   justify-content: center;
 }
+
 .gramot .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+h1 {
+  font-family: 'Lora', serif;
+  font-size: 100px;
+  line-height: 1;
+  margin-top: 180px;
+  font-weight: 500;
+  color: var(--colorDark);
+}
 
-  max-width: 600px;
-  height: 80%;
-  margin: 300px 0 0 220px;
+h2 {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 30px;
+  line-height: 1;
+  margin-top: 20px;
+  font-weight: 400;
+  color: var(--colorLite);
 }
 
 .gramot .atribut {
@@ -172,7 +193,7 @@ const formattedDate = computed(() => {
   width: 100%;
   margin-top: 20px;
   position: absolute;
-  bottom: 150px;
+  bottom: 350px;
 }
 
 .gramot .logo {
@@ -188,47 +209,52 @@ const formattedDate = computed(() => {
   width: 100%;
 }
 
-.gramot h1,
-.gramot h2 {
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  text-align: center;
-  user-select: none;
-  line-height: 1;
-}
-
 .gramot .name {
-  font-family: 'Marck Script', cursive;
+  font-family: 'Great Vibes', cursive;
   font-weight: 500;
-  font-size: 3em;
-  color: #b46a21;
+  font-size: 60px;
+  color: var(--colorDark);
   text-align: center;
   width: 100%;
-  /* max-width: 90%; */
-  line-height: 1.2;
-  margin: 30px 0;
+  max-width: 80%;
+  line-height: 1;
+  margin-top: 100px;
+  border-bottom: 2px solid #a47237;
+  padding-bottom: 12px;
 }
 
 .gramot .text {
   font-size: 18px;
   font-family: 'Lora', serif;
   font-style: italic;
-  color: black;
+  color: var(--colorLite);
   text-align: center;
   line-height: 1.5em;
   width: 100%;
-  max-width: 800px;
+  max-width: 80%;
+  margin-top: 20px;
 }
 
 .footer {
-  font-family: 'Marck Script', cursive;
-  font-family: 'Montserrat', sans-serif;
-  color: #b46a21;
-  font-size: 1.5em;
+  position: relative;
+
   position: absolute;
-  bottom: 40px;
+  bottom: 50px;
   font-weight: bold;
+  width: 200px;
+}
+
+.descr {
+  position: absolute;
+  top: 58px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Lora', serif;
+  color: #a47237;
+  font-size: 1.4em;
+  font-weight: 800;
+  width: 400px;
+  text-align: center;
 }
 
 .gramot .prof {
@@ -247,26 +273,24 @@ const formattedDate = computed(() => {
 .gramot .signature {
   position: relative;
   font-family: 'Lora', serif;
-  font-family: 'Marck Script', cursive;
   font-style: italic;
-
-  color: black;
+  color: var(--colorLite);
   text-align: center;
-  width: 190px;
-  border-bottom: 1px solid black;
-
+  width: 200px;
+  border-bottom: 1px solid #a47237;
+  padding-bottom: 4px;
   user-select: none;
 }
 
 .gramot .date::after,
 .gramot .signature::after {
   font-family: 'Lora', serif;
-  font-family: 'Marck Script', cursive;
+  /* font-style: italic; */
   position: absolute;
   left: 50%;
-  top: 20px;
+  top: 28px;
   transform: translate(-50%, 0%);
-  width: 200%;
+  width: 100%;
 }
 
 .gramot .date::after {

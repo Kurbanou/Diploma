@@ -155,6 +155,14 @@ body {
   transform-origin: center top;
 }
 
+.wrapperLetter {
+  height: 297mm;
+  width: 210mm;
+  page-break-after: always;
+  transform: scale(clamp(0.3, 100vh / 1550px, 0.8));
+  transform-origin: center top;
+}
+
 @media print {
   body {
     margin: 0;
@@ -171,6 +179,13 @@ body {
   .wrapper {
     width: 297mm;
     height: 210mm;
+    page-break-after: always;
+    transform: scale(1);
+  }
+
+  .wrapperLetter {
+    height: 297mm;
+    width: 210mm;
     page-break-after: always;
     transform: scale(1);
   }
