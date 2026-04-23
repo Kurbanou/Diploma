@@ -197,9 +197,10 @@ h2 {
 }
 
 .gramot .logo {
-  width: 240px;
+  width: 100px;
   position: absolute;
-  left: 100px;
+  left: 50%;
+  transform: translateX(-50%);
   top: 78px;
   z-index: 1;
 }
