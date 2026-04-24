@@ -166,12 +166,13 @@ const formattedDate = computed(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 1.5em;
 }
 h1 {
   font-family: 'Lora', serif;
   font-size: 100px;
   line-height: 1;
-  margin-top: 180px;
+  margin-top: 200px;
   font-weight: 500;
   color: var(--colorDark);
 }
@@ -197,11 +198,11 @@ h2 {
 }
 
 .gramot .logo {
-  width: 100px;
+  width: 150px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 78px;
+  top: 38px;
   z-index: 1;
 }
 
@@ -225,7 +226,6 @@ h2 {
 }
 
 .gramot .text {
-  font-size: 18px;
   font-family: 'Lora', serif;
   font-style: italic;
   color: var(--colorLite);
@@ -242,36 +242,26 @@ h2 {
   position: absolute;
   bottom: 50px;
   font-weight: bold;
-  width: 200px;
+  width: 150px;
 }
 
 .descr {
   position: absolute;
-  top: 58px;
+  top: 45px;
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Lora', serif;
   color: #a47237;
-  font-size: 1.4em;
+  font-size: 0.8em;
   font-weight: 800;
+  line-height: 1;
   width: 400px;
   text-align: center;
 }
 
-.gramot .prof {
-  color: black;
-  font-size: 1em;
-  font-weight: 400;
-  font-family: 'Lora', serif;
-  font-style: italic;
-  text-align: center;
-  line-height: 1.5em;
-  width: 100%;
-  max-width: 600px;
-}
-
 .gramot .date,
 .gramot .signature {
+  font-size: 0.8em;
   position: relative;
   font-family: 'Lora', serif;
   font-style: italic;
@@ -286,10 +276,10 @@ h2 {
 .gramot .date::after,
 .gramot .signature::after {
   font-family: 'Lora', serif;
-  /* font-style: italic; */
+  line-height: 1;
   position: absolute;
   left: 50%;
-  top: 28px;
+  top: 34px;
   transform: translate(-50%, 0%);
   width: 100%;
 }
@@ -299,6 +289,6 @@ h2 {
 }
 
 .gramot .signature::after {
-  content: 'директор Скидельского лесхоза';
+  content: 'директор ';
 }
 </style>
