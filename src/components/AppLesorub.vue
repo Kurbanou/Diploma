@@ -180,7 +180,7 @@ h1 {
 h2 {
   font-family: 'Lora', serif;
   font-style: italic;
-  font-size: 30px;
+  font-size: 1.6em;
   line-height: 1;
   margin-top: 20px;
   font-weight: 400;
@@ -220,7 +220,7 @@ h2 {
   width: 100%;
   max-width: 80%;
   line-height: 1;
-  margin-top: 100px;
+  margin-top: 80px;
   border-bottom: 2px solid #a47237;
   padding-bottom: 12px;
 }

@@ -62,9 +62,6 @@ const saveEdit = () => {
 const formattedDate = computed(() => {
   return formatDate(props.user.date, true)
 })
-
-// Для отладки — можно посмотреть историю в консоли
-console.log('История текстов:', history.value)
 </script>
 <template>
   <div class="certificate">

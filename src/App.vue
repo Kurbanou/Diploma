@@ -48,10 +48,11 @@ const handleUserUpdate = (updatedUser) => {
 }
 
 // Закрыть панель с задержкой
-const closeHistoryPanel = () => {
-  setTimeout(() => {
-    value5.value = false
-  }, 500)
+const closeHistoryPanel = (text) => {
+  if (text) {
+    user.value.text = text
+  }
+  value5.value = false
 }
 </script>
 
