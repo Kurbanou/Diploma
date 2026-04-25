@@ -105,8 +105,10 @@ const closeHistoryPanel = (text) => {
 
 <style>
 :root {
-  --colorDark: #a47237;
-  --colorLite: #3a5c47;
+  --colorName: #a17b41;
+  --colorGreen: #0d491d;
+  --colorGrey: #4b4b4b;
+  --colorBlack: #000000;
 }
 .non-print {
   position: relative;

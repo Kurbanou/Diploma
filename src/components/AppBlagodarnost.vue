@@ -62,9 +62,6 @@ const saveEdit = () => {
 const formattedDate = computed(() => {
   return formatDate(props.user.date, true)
 })
-
-// Для отладки — можно посмотреть историю в консоли
-console.log('История текстов:', history.value)
 </script>
 <template>
   <div class="certificate">
@@ -83,6 +80,7 @@ console.log('История текстов:', history.value)
             @blur="saveEdit"
             @keyup.enter="saveEdit"
             ref="inputRef"
+            style="width: 800px"
           />
           <span v-else>{{ user.profession }}</span>
         </div>
@@ -95,6 +93,7 @@ console.log('История текстов:', history.value)
             @blur="saveEdit"
             @keyup.enter="saveEdit"
             ref="inputRef"
+            style="width: 800px"
           />
           <span v-else>{{ user.name }}</span>
         </div>
@@ -102,7 +101,7 @@ console.log('История текстов:', history.value)
         <!-- Текст -->
         <div class="text field" @dblclick="startEditing('text')">
           <el-input
-            style="width: 600px"
+            style="width: 800px"
             type="textarea"
             v-if="editing.field === 'text'"
             v-model="editValue"
@@ -146,65 +145,56 @@ console.log('История текстов:', history.value)
   background-size: cover;
   display: flex;
   justify-content: center;
+  font-size: 18px;
 }
 .gramot .container {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  max-width: 600px;
+  max-width: 80%;
   height: 80%;
 }
 
 .gramot :deep(.logoSt1),
 .gramot :deep(.logoSnow) {
-  fill: #bc984a;
-  fill: url(#goldGradient);
+  fill: #b39566;
+  /* fill: url(#goldGradient); */
 }
 
 .gramot :deep(.logoSt0) {
   fill: none;
-  stroke: #bc984a;
-  stroke: url(#goldGradient);
+  stroke: #b39566;
+  /* stroke: url(#goldGradient); */
   stroke-width: 8;
   stroke-miterlimit: 10;
-  stroke-dasharray: 4240;
-  animation: strok2 2s linear;
 }
 
 .gramot .logo {
-  width: 120px;
+  width: 100px;
   position: absolute;
-  left: 54px;
-  top: 80px;
+  left: 40px;
+  top: 40px;
   z-index: 1;
 }
 
 h1 {
-  /* font-family: 'Marck Script', cursive;
-  font-family: 'Pacifico', cursive; */
   font-family: 'Lora', serif;
-  /* font-family: 'Great Vibes', cursive;
-  font-family: 'Montserrat', sans-serif;
-  font-family: 'Comfortaa', cursive; */
-  font-size: 60px;
+  font-size: 4em;
   line-height: 1;
   margin-top: 80px;
   font-weight: 500;
-  color: var(--colorDark);
+  color: var(--colorGreen);
 }
 
 h2 {
-  font-family: 'Great Vibes', cursive;
-  font-family: 'Marck Script', cursive;
-  font-family: 'Lora', serif;
   font-family: 'Lora', serif;
   font-style: italic;
-  font-size: 30px;
+  font-size: 2em;
   line-height: 1;
   margin-top: 20px;
   font-weight: 400;
-  color: var(--colorLite);
+  color: var(--colorGreen);
 }
 
 .gramot .atribut {
@@ -214,40 +204,49 @@ h2 {
   width: 100%;
   margin-top: 20px;
   position: absolute;
-  bottom: 144px;
+  bottom: 200px;
+  line-height: 1;
 }
 
 .gramot .name {
-  font-family: 'Marck Script', cursive;
   font-family: 'Great Vibes', cursive;
   font-weight: 500;
-  font-size: 60px;
-  color: var(--colorDark);
-
+  color: var(--colorName);
   text-align: center;
-  width: 100%;
-  max-width: 90%;
-  line-height: 1;
-  margin-top: 60px;
-  border-bottom: 2px solid #a47237;
-  padding-bottom: 12px;
+  line-height: 1.5;
+  margin-top: 30px;
+  border-bottom: 2px solid var(--colorName);
+
+  /* Ключевые свойства */
+  display: inline-block; /* Чтобы width: fit-content работал */
+  width: fit-content; /* Подстраивается под контент */
+  max-width: 100%; /* Но не шире родителя */
+  padding-left: 30px;
+  padding-right: 30px;
+  white-space: nowrap; /* Запрещаем перенос */
+
+  /* Хитрость: размер шрифта через vw относительно родителя */
+  font-size: clamp(14pt, 8vw, 36pt);
+
+  /* Центрирование блока */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gramot .text {
-  font-size: 18px;
+  font-size: 1.2em;
   font-family: 'Lora', serif;
   font-style: italic;
-  color: var(--colorLite);
+  color: var(--colorBlack);
   text-align: center;
   line-height: 1.5em;
   width: 100%;
-  max-width: 800px;
-  margin-top: 20px;
+  margin-top: 0.5em;
 }
 
 .gramot .prof {
-  color: var(--colorLite);
-  font-size: 1em;
+  color: var(--colorBlack);
+  font-size: 1.2em;
   font-weight: 400;
   font-family: 'Lora', serif;
   font-style: italic;
@@ -263,23 +262,25 @@ h2 {
   position: relative;
   font-family: 'Lora', serif;
   font-style: italic;
-  color: var(--colorLite);
+  color: var(--colorBlack);
   text-align: center;
   width: 250px;
-  border-bottom: 1px solid #a47237;
-  padding-bottom: 4px;
+  border-bottom: 1px solid var(--colorName);
+  padding-bottom: 8px;
   user-select: none;
+  font-size: 1.4em;
 }
 
 .gramot .date::after,
 .gramot .signature::after {
   font-family: 'Lora', serif;
-  /* font-style: italic; */
+  color: var(--colorGrey);
   position: absolute;
   left: 50%;
-  top: 28px;
+  top: 36px;
   transform: translate(-50%, 0%);
   width: 100%;
+  font-size: 0.7em;
 }
 
 .gramot .date::after {

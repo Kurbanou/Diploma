@@ -160,6 +160,7 @@ const formattedDate = computed(() => {
   background-size: cover;
   display: flex;
   justify-content: center;
+  font-size: 16px;
 }
 
 .gramot .container {
@@ -170,11 +171,11 @@ const formattedDate = computed(() => {
 }
 h1 {
   font-family: 'Lora', serif;
-  font-size: 100px;
+  font-size: 4em;
   line-height: 1;
   margin-top: 200px;
   font-weight: 500;
-  color: var(--colorDark);
+  color: #342816;
 }
 
 h2 {
@@ -184,17 +185,7 @@ h2 {
   line-height: 1;
   margin-top: 20px;
   font-weight: 400;
-  color: var(--colorLite);
-}
-
-.gramot .atribut {
-  display: flex;
-  justify-content: space-between;
-  max-width: 500px;
-  width: 100%;
-  margin-top: 20px;
-  position: absolute;
-  bottom: 350px;
+  color: #342816;
 }
 
 .gramot .logo {
@@ -214,21 +205,33 @@ h2 {
 .gramot .name {
   font-family: 'Great Vibes', cursive;
   font-weight: 500;
-  font-size: 60px;
-  color: var(--colorDark);
+  color: var(--colorName);
   text-align: center;
-  width: 100%;
-  max-width: 80%;
-  line-height: 1;
-  margin-top: 80px;
-  border-bottom: 2px solid #a47237;
-  padding-bottom: 12px;
+  line-height: 1.5;
+  margin-top: 30px;
+  border-bottom: 2px solid var(--colorName);
+
+  /* Ключевые свойства */
+  display: inline-block; /* Чтобы width: fit-content работал */
+  width: fit-content; /* Подстраивается под контент */
+  max-width: 100%; /* Но не шире родителя */
+  padding-left: 30px;
+  padding-right: 30px;
+  white-space: nowrap; /* Запрещаем перенос */
+
+  /* Хитрость: размер шрифта через vw относительно родителя */
+  font-size: clamp(14pt, 8vw, 36pt);
+
+  /* Центрирование блока */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gramot .text {
   font-family: 'Lora', serif;
   font-style: italic;
-  color: var(--colorLite);
+  font-size: 1em;
+  color: var(--colorBlack);
   text-align: center;
   line-height: 1.5em;
   width: 100%;
@@ -247,7 +250,7 @@ h2 {
 
 .descr {
   position: absolute;
-  top: 45px;
+  top: 46px;
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Lora', serif;
@@ -259,29 +262,39 @@ h2 {
   text-align: center;
 }
 
+.gramot .atribut {
+  display: flex;
+  justify-content: space-between;
+  max-width: 600px;
+  width: 100%;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 300px;
+}
 .gramot .date,
 .gramot .signature {
-  font-size: 0.8em;
   position: relative;
   font-family: 'Lora', serif;
   font-style: italic;
-  color: var(--colorLite);
+  color: var(--colorBlack);
   text-align: center;
-  width: 200px;
-  border-bottom: 1px solid #a47237;
-  padding-bottom: 4px;
+  width: 250px;
+  border-bottom: 1px solid var(--colorName);
+  padding-bottom: 8px;
   user-select: none;
+  font-size: 1.1em;
 }
 
 .gramot .date::after,
 .gramot .signature::after {
   font-family: 'Lora', serif;
-  line-height: 1;
+  color: var(--colorGrey);
   position: absolute;
   left: 50%;
-  top: 34px;
+  top: 50px;
   transform: translate(-50%, 0%);
   width: 100%;
+  font-size: 0.7em;
 }
 
 .gramot .date::after {
@@ -289,6 +302,6 @@ h2 {
 }
 
 .gramot .signature::after {
-  content: 'директор ';
+  content: 'директор Скидельского лесхоза';
 }
 </style>
