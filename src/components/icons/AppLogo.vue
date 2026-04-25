@@ -5,15 +5,15 @@
         id="goldGradient"
         x1="0%"
         y1="0%"
-        x2="100%"
-        y2="0%"
+        x2="0"
+        y2="100%"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0%" stop-color="#a47237" />
-        <stop offset="30%" stop-color="#dfb651" />
-        <stop offset="50%" stop-color="#eed67d" />
-        <stop offset="70%" stop-color="#dfb651" />
-        <stop offset="100%" stop-color="#a47237" />
+        <stop offset="0%" stop-color="#deae5f" />
+        <stop offset="30%" stop-color="#ebc778" />
+        <stop offset="50%" stop-color="#fde99f" />
+        <stop offset="70%" stop-color="#ebc778" />
+        <stop offset="100%" stop-color="#deae5f" />
       </linearGradient>
     </defs>
 

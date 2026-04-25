@@ -158,23 +158,23 @@ const formattedDate = computed(() => {
 
 .gramot :deep(.logoSt1),
 .gramot :deep(.logoSnow) {
-  fill: #b39566;
-  /* fill: url(#goldGradient); */
+  /* fill: #eedc92; */
+  fill: url(#goldGradient);
 }
 
 .gramot :deep(.logoSt0) {
   fill: none;
-  stroke: #b39566;
-  /* stroke: url(#goldGradient); */
+  /* stroke: #eedc92; */
+  stroke: url(#goldGradient);
   stroke-width: 8;
   stroke-miterlimit: 10;
 }
 
 .gramot .logo {
-  width: 100px;
+  width: 90px;
   position: absolute;
-  left: 40px;
-  top: 40px;
+  left: 87px;
+  top: 101px;
   z-index: 1;
 }
 
@@ -182,7 +182,7 @@ h1 {
   font-family: 'Lora', serif;
   font-size: 5em;
   line-height: 1;
-  margin-top: 80px;
+  margin-top: 100px;
   font-weight: 500;
   color: var(--colorGreen);
 }
