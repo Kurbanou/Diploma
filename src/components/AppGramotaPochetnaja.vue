@@ -173,8 +173,8 @@ const formattedDate = computed(() => {
 .gramot .logo {
   width: 90px;
   position: absolute;
-  left: 87px;
-  top: 101px;
+  left: 81px;
+  top: 95px;
   z-index: 1;
 }
 
