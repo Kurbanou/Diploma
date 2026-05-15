@@ -30,6 +30,10 @@ const options = [
     value: 'Option5',
     label: 'лесоруб',
   },
+  {
+    value: 'Option6',
+    label: 'диплом',
+  },
 ]
 
 const printCertificate = () => {
@@ -88,6 +92,7 @@ const closeHistoryPanel = (text) => {
   </div>
   <div class="inner">
     <app-gramota v-if="value === 'Option1'" :user="user" @update:user="handleUserUpdate" />
+    <app-diplom v-if="value === 'Option6'" :user="user" @update:user="handleUserUpdate" />
 
     <app-gramota-pochetnaja
       v-if="value === 'Option2'"
